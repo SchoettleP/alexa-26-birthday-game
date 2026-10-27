@@ -457,7 +457,8 @@
           print-color-adjust: exact !important;
         }
 
-        .no-print-bar {
+        .no-print-bar,
+        .no-print {
           display: none !important;
         }
 
@@ -861,6 +862,38 @@
           <div style="font-size: 0.58rem; color: #64748b; font-family: 'JetBrains Mono', monospace; text-align: center; margin-top: 3px;">
             [ IN DER MITTE KNICKEN &amp; GEGEN DAS LICHT HALTEN &rarr; ENTHÜLLT DEN CODE ]
           </div>
+          <!-- Screen-Only Verification Helper (Hidden on Print) -->
+          <div class="no-print" style="margin-top: 5px; padding: 4px 8px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 4px; font-size: 0.65rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: #475569;">💡 <strong>Gegenlicht-Prüfung (nur am Bildschirm):</strong></span>
+              <button onclick="toggleFoldSim()" style="background: #0f172a; color: #ffffff; border: none; padding: 2px 7px; border-radius: 3px; font-size: 0.62rem; cursor: pointer;">
+                👁️ Gefaltetes Gegenlicht-Ergebnis einblenden
+              </button>
+            </div>
+            <div id="fold-sim-box" style="display: none; margin-top: 5px; text-align: center; background: #ffffff; padding: 6px; border-radius: 4px; border: 1px solid #94a3b8;">
+              <div style="font-size: 0.62rem; color: #059669; font-weight: 700; margin-bottom: 3px;">
+                ✓ Beim Falten nach hinten schmilzt rot (Rückseite) und schwarz (Vorderseite) exakt zu 26 zusammen:
+              </div>
+              <svg viewBox="0 0 300 120" style="width: 240px; height: auto; display: block; margin: 0 auto; background: #ffffff;">
+                <circle cx="50" cy="60" r="12" fill="none" stroke="#cbd5e1" stroke-width="3" />
+                <!-- Digit 2: Left (Black) -->
+                <line x1="110" y1="24" x2="180" y2="24" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
+                <line x1="110" y1="60" x2="180" y2="60" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
+                <line x1="110" y1="96" x2="180" y2="96" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
+                <!-- Digit 2: Right Folded (Red) -->
+                <line x1="180" y1="24" x2="180" y2="60" stroke="#dc2626" stroke-width="11" stroke-linecap="round" opacity="0.85" />
+                <line x1="110" y1="60" x2="110" y2="96" stroke="#dc2626" stroke-width="11" stroke-linecap="round" opacity="0.85" />
+
+                <!-- Digit 6: Left (Black) -->
+                <line x1="205" y1="24" x2="275" y2="24" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
+                <line x1="205" y1="24" x2="205" y2="96" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
+                <line x1="205" y1="96" x2="275" y2="96" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
+                <!-- Digit 6: Right Folded (Red) -->
+                <line x1="205" y1="60" x2="275" y2="60" stroke="#dc2626" stroke-width="11" stroke-linecap="round" opacity="0.85" />
+                <line x1="275" y1="60" x2="275" y2="96" stroke="#dc2626" stroke-width="11" stroke-linecap="round" opacity="0.85" />
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -903,7 +936,10 @@
         </div>
         <div style="background: #f8fafc; border: 1.5px solid #0f172a; border-radius: 6px; padding: 6px 12px; text-align: center;">
           <svg viewBox="0 0 340 50" style="width: 100%; max-width: 440px; height: auto; display: block; margin: 0 auto; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 4px;">
-            <text x="60" y="34" font-family="'JetBrains Mono', monospace" font-size="20" font-weight="900" fill="#0f172a" letter-spacing="4" text-anchor="middle">X M T</text>
+            <!-- Left mirrored text: CODE (spells Ǝ ᗡ O Ɔ) -->
+            <g transform="translate(55, 33) scale(-1, 1)">
+              <text x="0" y="0" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="900" fill="#0f172a" letter-spacing="3">CODE</text>
+            </g>
             <line x1="105" y1="25" x2="120" y2="25" stroke="#0f172a" stroke-width="3" stroke-linecap="round" />
             <!-- Digit 5 -->
             <g id="spiegel-5-1">
@@ -926,10 +962,13 @@
               <polygon points="185,26 188,23 199,23 203,26 199,29 188,29" fill="#0f172a" />
             </g>
             <line x1="225" y1="25" x2="240" y2="25" stroke="#0f172a" stroke-width="3" stroke-linecap="round" />
-            <text x="280" y="34" font-family="'JetBrains Mono', monospace" font-size="20" font-weight="900" fill="#0f172a" letter-spacing="4" text-anchor="middle">V O</text>
+            <!-- Right mirrored text: BAD (spells ᗡ A ᙠ) -->
+            <g transform="translate(285, 33) scale(-1, 1)">
+              <text x="0" y="0" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="900" fill="#0f172a" letter-spacing="3">BAD</text>
+            </g>
           </svg>
           <div style="font-size: 0.58rem; color: #64748b; font-family: 'JetBrains Mono', monospace; margin-top: 3px;">
-            [ VOR DEN BADEZIMMERSPIEGEL HALTEN &rarr; OPTISCHE UMKEHRUNG: AUS 55 WIRD 22 ]
+            [ DIGITAL-CHYFFRE № 502 · ARMATUREN-SERIENNUMMER ]
           </div>
         </div>
       </div>
@@ -1456,6 +1495,13 @@
           try {
             localStorage.setItem('print_mode', 'color');
           } catch (e) {}
+        }
+      }
+
+      function toggleFoldSim() {
+        const box = document.getElementById('fold-sim-box');
+        if (box) {
+          box.style.display = box.style.display === 'none' ? 'block' : 'none';
         }
       }
 

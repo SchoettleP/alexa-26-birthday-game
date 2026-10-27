@@ -165,9 +165,14 @@ export const STATIONS: Station[] = [
       alternateCodes: [
         "22",
         "022",
+        "BAD22",
+        "BAD-22",
+        "CODE22",
+        "CODE-22",
+        "BAD22CODE",
+        "CODE22BAD",
         "TMX22",
         "TMX-22",
-        "OV22TMX",
         "52",
         "25",
         "55",
@@ -176,8 +181,10 @@ export const STATIONS: Station[] = [
       ],
       decoys: {
         "55": "Falle erwischt! Du hast die Digitalanzeige mit bloßem Auge abgelesen! Die Ziffern täuschen: Im Badezimmerspiegel kehren sich 7-Segment-Ziffern um – aus 55 wird 22! Halte die Karte vor den Spiegel!",
-        XMT55VO:
-          "Falle erwischt! Du hast die Anzeige ohne Spiegel abgelesen! Halte die Karte vor den Badezimmerspiegel!",
+        CODE55BAD:
+          "Falle erwischt! Du hast die Anzeige ohne Spiegel abgelesen! Achte auf die spiegelverkehrten Buchstaben (CODE und BAD) und halte die Karte vor den Badezimmerspiegel!",
+        BAD55CODE:
+          "Falle erwischt! Du hast die Anzeige ohne Spiegel abgelesen! Achte auf die spiegelverkehrten Buchstaben (CODE und BAD) und halte die Karte vor den Badezimmerspiegel!",
         "12": "Falle erwischt! Das Wasser plätschert hier zwar, aber dieser Raum ist viel zu klein! Wo kann man sich von Kopf bis Fuß abduschen und in die Wanne steigen?",
         WC: "Im Gäste-WC gibt es zwar ein Waschbecken, aber keine Dusche oder Badewanne! Suche das große Bad!",
         GAESTEWC: "Gäste-WC ist zu winzig! Das richtige Badezimmer hat Wanne und Dusche!",
