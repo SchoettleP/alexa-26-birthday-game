@@ -308,21 +308,21 @@
       .master-table {
         width: 100%;
         border-collapse: collapse;
-        font-size: 0.6rem;
-        line-height: 1.25;
+        font-size: 0.68rem;
+        line-height: 1.28;
       }
 
       .master-table th {
         background: #0f172a;
         color: #ffffff;
         text-align: left;
-        padding: 3px 5px;
+        padding: 4px 6px;
         font-weight: 700;
-        font-size: 0.62rem;
+        font-size: 0.7rem;
       }
 
       .master-table td {
-        padding: 2.2px 5px;
+        padding: 4px 6px;
         border-bottom: 1px solid #e2e8f0;
         vertical-align: middle;
       }
@@ -435,12 +435,26 @@
         color: #0f172a;
       }
 
-      /* Print Specifics */
+      /* Print Specifics & Page Setup */
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+
       @media print {
-        body {
+        @page {
+          size: A4 portrait;
+          margin: 0;
+        }
+
+        html, body {
           background: #ffffff !important;
           padding: 0 !important;
           margin: 0 !important;
+          width: 210mm !important;
+          height: 100% !important;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
         }
 
         .no-print-bar {
@@ -457,6 +471,9 @@
           padding: 8mm 11mm !important;
           page-break-after: always !important;
           break-after: page !important;
+          overflow: hidden !important;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
         }
       }
 
@@ -583,8 +600,14 @@
       <div>
         <h1>🕵️ EXIT – Birthday Masterfile (Alexa 26)</h1>
         <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 4px">
-          Drucke diese 6 Seiten aus (Strg + P). Seite 1 bleibt beim Spielleiter. Seite 2 enthält alle Spezial-Artefakte. Seiten 3 bis 6 enthalten die 8 großen Hinweiskarten (1 Karte pro Zeile).
+          Drucke diese 6 Seiten aus (Strg + P). Seite 1 bleibt beim Spielleiter. Seite 2 enthält Spezial-Artefakte. Seiten 3–6 enthalten die 8 Hinweiskarten (1 Karte/Zeile).
         </p>
+        <div style="margin-top: 6px; font-size: 0.8rem; background: #0f172a; padding: 6px 12px; border-radius: 6px; border: 1px solid #3b82f6; color: #93c5fd; display: inline-flex; align-items: center; gap: 8px;">
+          <span>💡 <strong>Druck-Einstellungen im Browser:</strong></span>
+          <span>Ränder: <strong>„Keine“</strong> (oder „Minimum“)</span>
+          <span>·</span>
+          <span>Optionen: <strong>„Hintergrundgrafiken“ anhaken</strong></span>
+        </div>
       </div>
       <div style="display: flex; align-items: center; gap: 12px">
         <div class="mode-switch">
@@ -609,12 +632,12 @@
       </div>
 
       <!-- Quick Setup Checklist -->
-      <div style="background: #f8fafc; border: 1.5px solid #0f172a; border-radius: 6px; padding: 6px 10px; margin-bottom: 6px;">
-        <div style="font-weight: 800; font-size: 0.72rem; color: #0f172a; margin-bottom: 4px; display: flex; justify-content: space-between;">
+      <div style="background: #f8fafc; border: 1.5px solid #0f172a; border-radius: 6px; padding: 7px 10px; margin-bottom: 6px;">
+        <div style="font-weight: 800; font-size: 0.73rem; color: #0f172a; margin-bottom: 3px; display: flex; justify-content: space-between;">
           <span>⚡ QUICK-SETUP VOR DEM SPIELSTART (5 SCHRITTE)</span>
-          <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: #b45309;">STATUS: VORBEREITUNG</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; color: #b45309;">STATUS: VORBEREITUNG</span>
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; font-size: 0.6rem; line-height: 1.3; color: #334155;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.62rem; line-height: 1.32; color: #334155;">
           <div>
             <strong>1. Schatzkammer verriegeln:</strong> Einen Kellerraum mit dem Vorhängeschloss abschließen. Den echten Schlüssel in der Küche (z. B. Kaffeemaschine) verstecken.<br />
             <strong>2. Spezial-Artefakte platzieren (Seite 2):</strong> Faltblatt (St. 1), Tastatur-Schablone (St. 7), Spiegelkarte (St. 5), QR-Schild (St. 9), Eiskarte (St. 11), Faltband (St. 12), Flamme (St. 13).
@@ -780,14 +803,14 @@
 
       <!-- Special Mechanics & Finale Guide -->
       <div style="margin-top: 6px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-        <div style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 6px; padding: 6px 8px; font-size: 0.6rem; line-height: 1.35; color: #166534;">
-          <strong style="color: #14532d; display: block; margin-bottom: 2px;">🧭 RICHTUNGSRÄTSEL: APP-STEUERKREUZ (D-PAD)</strong>
+        <div style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 6px; padding: 6px 8px; font-size: 0.63rem; line-height: 1.32; color: #166534;">
+          <strong style="color: #14532d; display: block; margin-bottom: 2px; font-size: 0.68rem;">🧭 RICHTUNGSRÄTSEL: APP-STEUERKREUZ (D-PAD)</strong>
           An <strong>St. 3 (Stiege)</strong> und <strong>St. 10 (Einlieger)</strong> erscheint in der App ein 4-Wege-Steuerkreuz. Spieler tippen den Pfad vom START (🚪) zum ZIEL (🗝️) ab:<br />
           &bull; <strong>St. 3 (Stiege):</strong> 2x Hoch, 1x Rechts, 1x Hoch &rarr; <strong>▲ ▲ ▶ ▲</strong><br />
           &bull; <strong>St. 10 (Einlieger):</strong> 1x Links, 1x Runter, 1x Rechts, 1x Runter &rarr; <strong>◀ ▼ ▶ ▼</strong>
         </div>
-        <div style="background: #fffbeb; border: 1.5px solid #fde68a; border-radius: 6px; padding: 6px 8px; font-size: 0.6rem; line-height: 1.35; color: #92400e;">
-          <strong style="color: #78350f; display: block; margin-bottom: 2px;">🏆 DAS FINALE: SCHLÜSSEL &amp; SCHATZKAMMER (St. 16 &amp; 17)</strong>
+        <div style="background: #fffbeb; border: 1.5px solid #fde68a; border-radius: 6px; padding: 6px 8px; font-size: 0.63rem; line-height: 1.32; color: #92400e;">
+          <strong style="color: #78350f; display: block; margin-bottom: 2px; font-size: 0.68rem;">🏆 DAS FINALE: SCHLÜSSEL &amp; SCHATZKAMMER (St. 16 &amp; 17)</strong>
           &bull; <strong>St. 16 (Küche):</strong> Formel (4 &times; 3) + 4 = <strong>16</strong> schaltet das Inventar-Item <em>„Schlüssel zur Schatzkammer“</em> frei. Alexa sucht und findet den physischen Schlüssel in der Küche.<br />
           &bull; <strong>St. 17 (Wohnzimmer):</strong> Master-Code <strong>42</strong> lüftet das Geheimnis: Die Schatzkammer ist der versiegelte Kellerraum! Mit dem Küchen-Schlüssel öffnet Alexa das Vorhängeschloss!
         </div>
