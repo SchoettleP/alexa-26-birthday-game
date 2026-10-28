@@ -633,7 +633,7 @@ export const STATIONS: Station[] = [
       badge: "ECHTER SCHLÜSSEL",
     },
     unlockedStory:
-      "🗝️ DER ECHTE SCHLÜSSEL IST GEFUNDEN! Code 16 hat das Geheimfach geöffnet! Greife in der Küche hinter die Kaffeemaschine (oder in die Besteckschublade) – dort liegt der echte, physische Schlüssel zur Schatzkammer! Nimm ihn an dich! Doch welche Tür im ganzen Haus sperrt er auf? Wo liegt die geheime Schatzkammer? Eile zum gemütlichen Wohnbereich des Hauses für das finale Orts-Rätsel!",
+      "🗝️ DER ECHTE SCHLÜSSEL IST SCHON GANZ NAH! Er ist so nah das man ihn schon riechen kann...",
   },
   {
     id: "station_17_wohnzimmer",
@@ -643,7 +643,7 @@ export const STATIONS: Station[] = [
     title: "Station 17: Das Geheimnis der Schatzkammer",
     icon: "Crown",
     storyIntro:
-      "Der Schlüssel liegt in deiner Hand, doch das Schloss harrt noch im Verborgenen. Kehre zurück in den gemütlichen Mittelpunkt des Hauses, um das finale Geheimnis zu entschlüsseln.",
+      "Der Schlüssel liegt in deiner Hand, doch das Schloss harrt noch im Verborgenen.",
     physicalTask: {
       taskType: "code",
       instruction:
@@ -675,6 +675,6 @@ export const STATIONS: Station[] = [
       ],
     },
     unlockedStory:
-      "🎉 DIE SCHATZKAMMER IST ENTTARNT! Die geheime Schatzkammer liegt tief unten im Haus: Einer der Kellerräume wurde mit dem schweren Vorhängeschloss versiegelt! Steige hinab in den Kellerflur, finde das Vorhängeschloss an der Kellertür, stecke deinen gefundenen Schlüssel hinein und öffne deine persönliche Schatzkammer! 🎂 HERZLICHEN GLÜCKWUNSCH ZUM 26. GEBURTSTAG, ALEXA!",
+      "🎉 DIE SCHATZKAMMER IST ENTTARNT! Die geheime Schatzkammer liegt tief unten im Haus. 🎂 HERZLICHEN GLÜCKWUNSCH ZUM 26. GEBURTSTAG, ALEXA!",
   },
 ];
