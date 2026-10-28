@@ -9,19 +9,20 @@ export const STATIONS: Station[] = [
     title: "Station 1: Das Fragment im Licht",
     icon: "Moon",
     storyIntro:
-      "Irgendwo im Haus wartet deine geheime Geburtstags-Schatzkammer, versiegelt mit einem echten Vorhängeschloss. Der Schlüssel dazu existiert nur ein einziges Mal – verborgen an einem geheimen Ort auf diesem Anwesen. Eine Spur aus kryptischen Raum-Chiffren trennt dich vom Schlüssel und vom Ort der Schatzkammer. Dein erster Hinweis liegt direkt am Schlafplatz...",
+      "Irgendwo auf diesem Anwesen wartet deine versiegelte Geburtstags-Schatzkammer. Der Schlüssel dazu existiert nur ein einziges Mal. Eine Kette kryptischer Chiffren trennt dich von ihm. Finde den Ort, an dem jeder Tag beginnt und endet...",
     physicalTask: {
       taskType: "code",
       instruction:
-        "Öffne die Nachttischschublade und entnimm die ersten beiden Artefakte. Bringe die Fragmente des Faltblatts (Artefakt #1) gegen eine Lichtquelle zusammen. Welcher zweistellige Code schmilzt im Gegenlicht zusammen? (Stecke Artefakt #2 unbedingt in deinen Rucksack!):",
+        "Irgendwo haben sich zwei Artefakte versteckt. Artefakt #1 benötigst du um dieses Rätsel zu lösen. Artefakt #2 ist wichtig für später.",
       inputPlaceholder: "Code eingeben...",
       inputType: "text",
       correctCode: "26",
       alternateCodes: ["TRAUM", "BETT", "START", "SCHLUESSEL"],
       decoys: {
         "11": "Falle erwischt! Im Kleiderschrank hängen nur Kleider. Gesucht ist der Umschlag direkt am Schlafplatz!",
-        SCHRANK: "Im Kleiderschrank ist die Kleidung ordentlich, aber der Umschlag liegt direkt an der Matratze!",
-        KISSEN: "Unter dem Kissen schläft es sich weich, aber schau genauer in die Schublade!",
+        SCHRANK:
+          "Im Kleiderschrank ist die Kleidung ordentlich, aber der Umschlag liegt direkt an der Matratze!",
+        KISSEN: "Unter dem Kissen schläft es sich weich... leider falsch.",
         WECKER: "Der Wecker tickt brav, birgt aber keine Nachricht!",
       },
       hints: [
@@ -32,15 +33,15 @@ export const STATIONS: Station[] = [
     },
     inventoryAwarded: {
       id: "lochstreifen",
-      name: "Tastatur-Chiffrekarte",
+      name: "Koordinaten-Protokoll",
       icon: "KeyRound",
       description:
-        "Ein Protokoll mit den Tastatur-Koordinaten C4 · B9 · C8 · B7 · C2. Stecke sie ein – du brauchst sie im Arbeitszimmer!",
+        "Ein Protokoll mit den Koordinaten C4 · B9 · C8 · B7 · C2. Stecke es gut ein – du wirst es später noch brauchen!",
       stationAcquired: 1,
       badge: "Artefakt #2",
     },
     unlockedStory:
-      "Erster Code verifiziert! Die Zahl 26 hat die Fährte eröffnet. Stecke die Tastatur-Chiffrekarte gut ein – sie wird noch eine entscheidende Rolle spielen. Eine Notiz weist den Weg ins Freie...",
+      "Erster Code verifiziert! Die Zahl 26 hat die Fährte eröffnet. Stecke Artefakt #2 gut ein – es wird noch eine entscheidende Rolle spielen. Eine Notiz weist den Weg ins Freie...",
   },
   {
     id: "station_2_balkon",
@@ -50,20 +51,30 @@ export const STATIONS: Station[] = [
     title: "Station 2: Der schwebende Himmelsstürmer",
     icon: "Mountain",
     storyIntro:
-      "Wohin führt die nächste Spur? Das Rätsel lautet: ‚Verlasse die vier Wände, ohne das obere Stockwerk zu verlassen. Tritt hinaus auf die Freiluft-Plattform mit weitem Blick über das Anwesen. Blicke nach oben: Dort schwebt ein stiller Himmelsstürmer, der normalerweise mit heißer Luft in die Wolken steigt...‘",
+      "Ein Schritt ins Freie, doch kein Schritt hinab. Wind im Gesicht, aber festen Boden der oberen Etage unter den Füßen: Finde die Schwelle, an der Innen und Außen ineinander übergehen.",
     physicalTask: {
       taskType: "code",
       instruction:
-        "Tritt hinaus auf den Balkon und blicke nach oben zur Heißluftballon-Lampe! Greife in den Korb des Ballons: Dort hat der Schlüsselmeister ein Dokument versteckt. Löse das Rätsel der Gondel und gib das Lösungswort ein:",
+        "Finde das an diesem Ort versteckte Hinweiskärtchen. Löse das Rätsel und gib das Lösungswort ein:",
       inputPlaceholder: "Lösungswort eingeben...",
       inputType: "text",
       correctCode: "BALLON",
-      alternateCodes: ["HEISSLUFTBALLON", "KORB", "AUFTRIEB", "LUFT", "LAMPE", "WIND"],
+      alternateCodes: [
+        "HEISSLUFTBALLON",
+        "KORB",
+        "AUFTRIEB",
+        "LUFT",
+        "LAMPE",
+        "WIND",
+      ],
       decoys: {
         "84": "Falle erwischt! Frische Luft stimmt zwar, aber du bist viel zu tief gelaufen! Gesucht ist eine Freiluft-Plattform auf der oberen Etage!",
-        GARTEN: "Falle erwischt! Du bist ganz unten im Garten gelandet. Gesucht ist der erhöhte Ausguck im Obergeschoss mit der schwebenden Ballon-Lampe!",
-        TERRASSE: "Die Terrasse liegt zu tief! Geh nach oben und tritt dort hinaus!",
-        RASEN: "Auf dem Rasen stehst du zwar im Freien, aber die Heißluftballon-Lampe schwebt oben auf dem Balkon!",
+        GARTEN:
+          "Falle erwischt! Du bist ganz unten im Garten gelandet. Gesucht ist der erhöhte Ausguck im Obergeschoss mit der schwebenden Ballon-Lampe!",
+        TERRASSE:
+          "Die Terrasse liegt zu tief! Geh nach oben und tritt dort hinaus!",
+        RASEN:
+          "Auf dem Rasen stehst du zwar im Freien, aber die Heißluftballon-Lampe schwebt oben auf dem Balkon!",
       },
       hints: [
         "Bleibe auf der oberen Schlafetage.",
@@ -83,11 +94,11 @@ export const STATIONS: Station[] = [
     title: "Station 3: Das schmale Nadelöhr",
     icon: "Footprints",
     storyIntro:
-      "Das Rätsel lautet: ‚Zurück im Inneren. Gesucht ist kein Aufenthaltsraum, sondern ein schmaler, unscheinbarer Verbindungsgang dieser Etage. Hier kreuzen sich die Pfade, mehrere Türen stehen Spalier und eine steile Stiege wartet auf mutige Schritte.‘",
+      "Kein Raum zum Verweilen, sondern eine Schleuse der Bewegung. Hier kreuzen sich Pfade auf engstem Raum – und hölzerne Stufen fordern die Schwerkraft heraus.",
     physicalTask: {
       taskType: "directional",
       instruction:
-        "Tritt in den schmalen Verbindungsgang vor die Stiege und finde das dort hinterlegte Richtungs-Protokoll. Es beschreibt den Aufstiegspfad: Gib die 4-teilige Pfeil-Kombination über das D-Pad in das Schloss ein:",
+        "Finde das an diesem Ort hinterlegte Richtungs-Protokoll. Gib die 4-teilige Pfeil-Kombination über das D-Pad in das Schloss ein:",
       directional: {
         gridTitle: "Stiegen-Aufstiegspfad",
         targetSequence: ["UP", "UP", "RIGHT", "UP"],
@@ -96,8 +107,10 @@ export const STATIONS: Station[] = [
       alternateCodes: ["STIEGE", "TREPPE", "DURCHGANG", "STUFEN"],
       decoys: {
         "99": "Falle erwischt! Hier ist viel zu viel Platz! Gesucht war nicht die breite Hauptachse mit der Garderobe, sondern der engere Verbindungsgang mit der Stiege!",
-        GROSSERFLUR: "Zu weitläufig! Gesucht ist der kleine, schmale Durchgang mit der Stiege!",
-        GARDEROBE: "An der Garderobe bist du falsch. Geh zurück in das schmale Nadelöhr!",
+        GROSSERFLUR:
+          "Zu weitläufig! Gesucht ist der kleine, schmale Durchgang mit der Stiege!",
+        GARDEROBE:
+          "An der Garderobe bist du falsch. Geh zurück in das schmale Nadelöhr!",
       },
       hints: [
         "Untersuche den Antritt der Stiege nach dem Richtungs-Protokoll.",
@@ -116,19 +129,31 @@ export const STATIONS: Station[] = [
     title: "Station 4: Das Refugium unter den Schrägen",
     icon: "Sparkles",
     storyIntro:
-      "Das Rätsel lautet: ‚Erklimme die Stufen bis ganz nach oben unter die Schrägen. Gesucht ist die gemütliche Dachgeschoss-Wohnung ganz oben im Haus, wo die schrägen Fenster den weiten Blick nach draußen freigeben.‘",
+      "Wo die Wände sich neigen und Balken den Dachfirst stützen, endet der Aufstieg. Finde den höchsten Rückzugsort des Hauses – dort, wo man den Sternen am nächsten ist.",
     physicalTask: {
       taskType: "code",
       instruction:
-        "Gehe hinauf in die Dachwohnung und untersuche die Fensterbank des Dachfensters nach dem Hinweiskärtchen. Löse das Himmels-Rätsel und gib das Lösungswort ein:",
+        "Finde das an diesem Ort versteckte Hinweiskärtchen. Löse das Rätsel und gib das Lösungswort ein:",
       inputPlaceholder: "Lösungswort eingeben...",
       inputType: "text",
       correctCode: "HIMMEL",
-      alternateCodes: ["33", "WOLKE", "DACH", "DACHGESCHOSS", "FENSTER", "AUSSICHT", "STERNE", "GIEBEL", "FIRST"],
+      alternateCodes: [
+        "33",
+        "WOLKE",
+        "DACH",
+        "DACHGESCHOSS",
+        "FENSTER",
+        "AUSSICHT",
+        "STERNE",
+        "GIEBEL",
+        "FIRST",
+      ],
       decoys: {
         "52": "Falle erwischt! Du bist auf der falschen Etage gelandet! Geh ganz nach oben unter die Dachschrägen!",
-        KELLER: "Ganz falsche Richtung! Du bist in den Keller gelaufen! Das gesuchte Refugium liegt ganz oben im Dachgeschoss!",
-        BALKON: "Draußen warst du vorhin schon! Geh hinauf in die Dachgeschoss-Wohnung!",
+        KELLER:
+          "Ganz falsche Richtung! Du bist in den Keller gelaufen! Das gesuchte Refugium liegt ganz oben im Dachgeschoss!",
+        BALKON:
+          "Draußen warst du vorhin schon! Geh hinauf in die Dachgeschoss-Wohnung!",
       },
       hints: [
         "Steige die Treppe bis ganz nach oben in die Dachwohnung.",
@@ -147,11 +172,11 @@ export const STATIONS: Station[] = [
     title: "Station 5: Die optische Täuschung",
     icon: "Droplets",
     storyIntro:
-      "Das Rätsel lautet: ‚Nach dem staubigen Gebälk ruft das nasse Element. Gesucht ist der geflieste Raum voller Spiegel, Armaturen und Keramik zur Erfrischung und Pflege. Doch Vorsicht: Es gibt mehr als einen Raum mit fließendem Nass!‘",
+      "Spiegel brechen das Licht, Keramik zähmt das fließende Element. Doch hüte dich vor der Verwechslung: Gesucht ist nicht die kleine Zwischenstation, sondern der Ort, an dem das Wasser eine ganze Wanne füllen kann.",
     physicalTask: {
       taskType: "safe",
       instruction:
-        "Finde das Kärtchen (Artefakt #3) im Badezimmer. Entziffere die verborgene Botschaft und gib den Code ein (oder stelle die 3 Räder des Schlosses ein):",
+        "Finde das Kärtchen (Artefakt #3) an diesem Ort. Entziffere die verborgene Botschaft und gib den Code ein (oder stelle die 3 Räder des Schlosses ein):",
       hints: [
         "Die Digitalanzeige wirkt auf den ersten Blick wie eine normale Zahl – doch trügt der Schein?",
         "Ein reflektierendes Objekt in diesem Raum bringt die wahre Natur der Ziffern ans Licht.",
@@ -187,38 +212,45 @@ export const STATIONS: Station[] = [
           "Falle erwischt! Du hast die Anzeige ohne Spiegel abgelesen! Achte auf die spiegelverkehrten Buchstaben (CODE und BAD) und halte die Karte vor den Badezimmerspiegel!",
         "12": "Falle erwischt! Das Wasser plätschert hier zwar, aber dieser Raum ist viel zu klein! Wo kann man sich von Kopf bis Fuß abduschen und in die Wanne steigen?",
         WC: "Im Gäste-WC gibt es zwar ein Waschbecken, aber keine Dusche oder Badewanne! Suche das große Bad!",
-        GAESTEWC: "Gäste-WC ist zu winzig! Das richtige Badezimmer hat Wanne und Dusche!",
+        GAESTEWC:
+          "Gäste-WC ist zu winzig! Das richtige Badezimmer hat Wanne und Dusche!",
       },
     },
     unlockedStory:
-      "Spiegel-Täuschung durchschaut! Im Spiegelbild verwandelte sich die 55 in eine glasklare 22: ‚Wasser schadet dem Vorhängeschloss! Die Fährte führt weiter zur Kammer der nützlichen Vorräte...‘",
+      "Spiegel-Täuschung durchschaut! Im Spiegelbild verwandelte sich die 55 in eine glasklare 22: ‚Wasser schadet dem Vorhängeschloss! Die Fährte führt weiter zur Kammer des organisierten Chaos...‘",
   },
   {
     id: "station_6_abstellkammer",
     step: 6,
     room: "Abstellkammer",
     zone: "Obergeschoss",
-    title: "Station 6: Die Kammer der Vorräte",
+    title: "Station 6: Die Kammer",
     icon: "Package",
     storyIntro:
-      "Das Rätsel lautet: ‚Hinter einer schmalen Tür verbirgt sich das organisierte Chaos: Ein fensterloser Raum voller Regale, Vorräte, Putzutensilien und Haushaltsgeräte auf dieser Etage.‘",
+      "Jedes Haus hütet ein verborgenes Archiv – eine Raum ohne Zeremonie, in dem nützliche Dinge im Verborgenen auf ihren Einsatz warten.",
     physicalTask: {
       taskType: "code",
       instruction:
-        "Durchsuche die Abstellkammer nach dem dort hinterlegten Hinweiskärtchen. Finde den Pfad durch das Regal-Wortgitter und gib das Lösungswort ein:",
+        "Finde das an diesem Ort hinterlegte Hinweiskärtchen. Entziffere das Wortgitter und gib das Lösungswort ein:",
       inputPlaceholder: "Lösungswort eingeben...",
       inputType: "text",
       correctCode: "VORRAT",
       alternateCodes: ["68", "RUMPEL", "CHAOS"],
       decoys: {
-        BESEN: "Falle erwischt! Der Besen steht zwar im Regal, aber das gesuchte Wort hat 6 Buchstaben und liegt schräg!",
-        KARTON: "Falle erwischt! Ein Karton steht hier zwar, aber das gesuchte Hauptwort liegt schräg im Gitter!",
-        EIMER: "Falle erwischt! Der Eimer ist nur ein Hilfsmittel, nicht der wahre Zweck der Kammer!",
+        BESEN:
+          "Falle erwischt! Der Besen steht zwar im Regal, aber das gesuchte Wort hat 6 Buchstaben und liegt schräg!",
+        KARTON:
+          "Falle erwischt! Ein Karton steht hier zwar, aber das gesuchte Hauptwort liegt schräg im Gitter!",
+        EIMER:
+          "Falle erwischt! Der Eimer ist nur ein Hilfsmittel, nicht der wahre Zweck der Kammer!",
         DOSE: "Falle erwischt! Dosen stehen hier viele, aber das gesuchte Wort hat 6 Buchstaben!",
-        REGAL: "Falle erwischt! Auf dem Regal stehen die Dinge, aber das gesuchte Wort liegt diagonal im Gitter!",
+        REGAL:
+          "Falle erwischt! Auf dem Regal stehen die Dinge, aber das gesuchte Wort liegt diagonal im Gitter!",
         "31": "Falle erwischt! Du bist zu tief gelaufen! Suche nicht im Keller. Die gesuchte Abstellkammer liegt direkt hier oben auf der Schlafetage!",
-        KELLER: "Falsche Etage! Lauf nicht in den Keller hinab, die Kammer ist hier im Obergeschoss!",
-        PUTZSCHRANK: "Im Küchenschrank steht zwar auch Spülmittel, aber gesucht ist eine echte begehbare Kammer im OG!",
+        KELLER:
+          "Falsche Etage! Lauf nicht in den Keller hinab, die Kammer ist hier im Obergeschoss!",
+        PUTZSCHRANK:
+          "Im Küchenschrank steht zwar auch Spülmittel, aber gesucht ist eine echte begehbare Kammer im OG!",
       },
       hints: [
         "Bleibe im Obergeschoss und durchsuche die Regale der Kammer.",
@@ -237,11 +269,11 @@ export const STATIONS: Station[] = [
     title: "Station 7: Das Eingabe-Terminal",
     icon: "BookOpen",
     storyIntro:
-      "Das Rätsel lautet: ‚Ein Raum des Wissens, der Pläne und Bildschirme. Wo Bücherreihen stehen, Dokumente sortiert werden und der Schreibtisch das Zentrum bildet.‘",
+      "Hier herrschen Fokus, Logik und digitaler Austausch. Ein Raum, dominiert von Dokumenten, Monitoren und Tasten, an dem Pläne Wirklichkeit werden.",
     physicalTask: {
       taskType: "code",
       instruction:
-        "KOMBI-RÄTSEL: Nimm das Koordinaten-Protokoll (Artefakt #2) aus deinem Rucksack. Tritt an die Computertastatur im Arbeitszimmer und entschlüssele die 5 Koordinaten: C4 – B9 – C8 – B7 – C2. Welches Lösungswort verbirgt sich dahinter?",
+        "KOMBI-RÄTSEL: Nimm das Koordinaten-Protokoll (Artefakt #2) aus deinem Rucksack. Finde an diesem Ort das passende Gegenstück, um die Koordinaten zu entschlüsseln. Welches Lösungswort verbirgt sich dahinter?",
       inputPlaceholder: "Lösungswort eingeben...",
       inputType: "text",
       correctCode: "FOKUS",
@@ -250,7 +282,8 @@ export const STATIONS: Station[] = [
         "47": "Falle erwischt! Hier auf dem Sofa wird gemütlich gelesen, aber nicht gearbeitet! Gesucht ist der Schreibtisch!",
         TASTATUR:
           "Du stehst genau vor dem richtigen Gerät! Entschlüssele die 5 Koordinaten deines Protokolls an den Tasten!",
-        LESEN: "Die Leseecke ist gemütlich, aber nicht das gesuchte Arbeitszimmer!",
+        LESEN:
+          "Die Leseecke ist gemütlich, aber nicht das gesuchte Arbeitszimmer!",
         SOFA: "Auf der Couch wird entspannt, geh an den echten Schreibtisch!",
         SCHREIBTISCH:
           "Am Schreibtisch bist du goldrichtig! Nutze das Protokoll auf der Tastatur!",
@@ -273,11 +306,11 @@ export const STATIONS: Station[] = [
     title: "Station 8: Das isolierte Refugium",
     icon: "Sparkles",
     storyIntro:
-      "Das Rätsel lautet: ‚Der nächste Hinweis liegt im kleinsten, isoliertesten Rückzugsort dieser Etage. Ein einzelner, fensterloser Raum, reduziert auf das absolute Minimum für ungestörte Momente abseits des großen Bades.‘",
+      "Auf das absolute Minimum reduziert. Eine isolierte Zelle abseits des großen Trubels, die man stets nur ganz allein betritt.",
     physicalTask: {
       taskType: "code",
       instruction:
-        "Durchsuche das kleine WC nach dem dort hinterlegten Hinweiskärtchen. Entwirre die Buchstaben-Chiffre und gib das Lösungswort ein:",
+        "Finde das an diesem Ort hinterlegte Hinweiskärtchen. Entwirre die Buchstaben-Chiffre und gib das Lösungswort ein:",
       inputPlaceholder: "Lösungswort eingeben...",
       inputType: "text",
       correctCode: "ECHO",
@@ -304,11 +337,11 @@ export const STATIONS: Station[] = [
     title: "Station 9: Die zentrale Hauptachse",
     icon: "Compass",
     storyIntro:
-      "Das Rätsel lautet: ‚Tritt heraus auf die zentrale Lebensader des oberen Reiches. Die breite Hauptachse, an der Mäntel und Jacken hängen, Schuhe Spalier stehen und von der fast alle Türen abzweigen.‘",
+      "Die zentrale Hauptader dieser Etage. Wo Jacken aufgereiht hängen, Schuhe Spalier stehen und fast alle Wege des Hauses ihren Anfang nehmen.",
     physicalTask: {
       taskType: "qr",
       instruction:
-        "Finde das Kontrollschild (Artefakt #4) an der großen Garderobe. Scanne den QR-Code mit der Handykamera oder gib den Sicherheitscode manuell ein:",
+        "Finde das Kontrollschild (Artefakt #4) an diesem Ort. Scanne den QR-Code mit der Handykamera oder gib den Sicherheitscode manuell ein:",
       hints: [
         "Gehe zur großen Garderobe im Hauptflur.",
         "Halte die Kamera auf das dort angebrachte Schild oder tippe die Zahl ab.",
@@ -316,15 +349,18 @@ export const STATIONS: Station[] = [
       ],
       qrScan: {
         expectedPayload: "ALEXA_FLUR_26",
-        instructionText: "Halte die Kamera auf das QR-Schild an der Flurgarderobe oder tippe den Code ab.",
+        instructionText:
+          "Halte die Kamera auf das QR-Schild oder tippe den Sicherheitscode manuell ab.",
         manualFallbackCode: "95",
       },
       correctCode: "95",
       alternateCodes: ["ACHSE", "GARDEROBE", "FLUR"],
       decoys: {
         "19": "Falle erwischt! Nicht wieder in das schmale Nadelöhr zur Stiege laufen! Gesucht ist die breite Garderobe im Hauptflur!",
-        KLEIN: "Der kleine Flur war vorhin dran! Jetzt bist du auf dem großen Flur gefragt!",
-        TREPPE: "Nicht an der schmalen Stiege suchen, sondern bei der großen Garderobe!",
+        KLEIN:
+          "Der kleine Flur war vorhin dran! Jetzt bist du auf dem großen Flur gefragt!",
+        TREPPE:
+          "Nicht an der schmalen Stiege suchen, sondern bei der großen Garderobe!",
       },
     },
     unlockedStory:
@@ -338,11 +374,11 @@ export const STATIONS: Station[] = [
     title: "Station 10: Das separate Areal",
     icon: "Key",
     storyIntro:
-      "Das Rätsel lautet: ‚Verlasse das gewohnte Terrain. Gesucht ist eine eigenständige Wohneinheit unter demselben Dach – mit eigener Tür und privatem Bereich, abseits des Haupttrubels.‘",
+      "Ein autarkes Territorium unter demselben Dach. Ein vollständiges Reich mit eigener Schwelle, entrückt vom gewohnten Lebensbereich.",
     physicalTask: {
       taskType: "directional",
       instruction:
-        "Begib dich in die untere Einliegerwohnung und finde das dort hinterlegte Navigations-Chart. Gib die 4-teilige Pfeil-Kombination des Abstiegs in das Schloss ein:",
+        "Finde das an diesem Ort hinterlegte Navigations-Chart. Gib die 4-teilige Pfeil-Kombination über das D-Pad in das Schloss ein:",
       directional: {
         gridTitle: "Keller-Abstiegspfad",
         targetSequence: ["LEFT", "DOWN", "RIGHT", "DOWN"],
@@ -371,19 +407,21 @@ export const STATIONS: Station[] = [
     title: "Station 11: Das kalte Fundament",
     icon: "Snowflake",
     storyIntro:
-      "Das Rätsel lautet: ‚Steige hinab ins kälteste Fundament des Hauses. Dicke Steinwände, feuchte Kälte und Vorräte, die vor Verderb geschützt werden. Wo herrscht ewiger Winter?‘",
+      "Steige hinab in das kälteste Fundament des Hauses. Dicke Steinwände und feuchte Kälte: Finde den Ort, an dem ewiger Winter herrscht.",
     physicalTask: {
       taskType: "code",
       instruction:
-        "Finde die Kälte-Karte (Artefakt #5) im Kellergewölbe. Sie birgt eine fundamentale Zahl für das Finale. Welche Kältezahl steht darauf? (Nimm die Karte unbedingt mit in deinen Rucksack!):",
-      inputPlaceholder: "Kältezahl eingeben...",
+        "Finde die Kälte-Karte (Artefakt #5) an diesem Ort. Sie birgt eine fundamentale Zahl für später. Welche Zahl steht darauf? (Nimm die Karte unbedingt mit in deinen Rucksack!):",
+      inputPlaceholder: "Zahl eingeben...",
       inputType: "text",
       correctCode: "4",
       alternateCodes: ["14", "EISKALT", "KUEHL", "WINTER", "FROST"],
       decoys: {
         "07": "Haha, eiskalt erwischt! Im Kühlschrank frieren zwar Milch und Joghurt, aber gesucht ist ein ganzer, begehbarer Raum ganz tief unten im Fundament des Hauses!",
-        KUEHLSCHRANK: "Falle erwischt! Der Kühlschrank in der Küche ist zwar kalt, aber gesucht ist ein ganzer Raum tief im Keller!",
-        GEFRIERFACH: "Im Gefrierfach ist es frostig, aber der gesuchte Ort hat echte Steinwände im Kellergeschoss!",
+        KUEHLSCHRANK:
+          "Falle erwischt! Der Kühlschrank in der Küche ist zwar kalt, aber gesucht ist ein ganzer Raum tief im Keller!",
+        GEFRIERFACH:
+          "Im Gefrierfach ist es frostig, aber der gesuchte Ort hat echte Steinwände im Kellergeschoss!",
       },
       hints: [
         "Verlasse die Wohnräume und gehe tief in den Keller hinab.",
@@ -392,7 +430,8 @@ export const STATIONS: Station[] = [
       ],
       photoChallenge: {
         challengeTitle: "Das Zitter-Selfie im Eiskeller!",
-        prompt: "Knipse ein lustiges Zitter-Foto mit Gänsehaut-Blick für dein Geburtstags-Album!",
+        prompt:
+          "Knipse ein lustiges Zitter-Foto mit Gänsehaut-Blick für dein Geburtstags-Album!",
         badgeText: "Eiskeller-Expedition",
         cameraFacing: "user",
       },
@@ -406,7 +445,7 @@ export const STATIONS: Station[] = [
       badge: "KÄLTE = 4",
     },
     unlockedStory:
-      "Kaltes Fundament bezwungen! Kälte-Konstante 4 ist im Rucksack verstaut. Ein Pfeil zeigt zur nächsten Tür: ‚Doch der Schlüsselmeister brauchte Werkzeug zur Vorbereitung des Verstecks. Geh hinüber in die Werkstatt...‘",
+      "Kaltes Fundament bezwungen! Kälte-Konstante 4 ist im Rucksack verstaut. Ein Pfeil zeigt zur nächsten Tür: ‚Doch der Schlüsselmeister brauchte Werkzeug zur Vorbereitung des Verstecks. Geh hinüber dorthin, wo das Handwerk zu Hause ist...‘",
   },
   {
     id: "station_12_keller",
@@ -416,11 +455,11 @@ export const STATIONS: Station[] = [
     title: "Station 12: Der Werkbank-Mechanismus",
     icon: "Wrench",
     storyIntro:
-      "Das Rätsel lautet: ‚Wo Metall bearbeitet wird, Späne fallen und Werkzeuge an Lochwänden hängen. Gesucht ist der Raum des Handwerks mit schwerem Schraubstock.‘",
+      "Wo Späne fallen, Funken sprühen und Metall bezwungen wird. Finde die Wirkungsstätte des Handwerks in den Tiefen des Hauses.",
     physicalTask: {
       taskType: "code",
       instruction:
-        "Am Schraubstock der Werkbank klemmt ein codierter Papierstreifen (Artefakt #6). Falte den Streifen im Zick-Zack (Leporello-Falz) zusammen: Welches 8-buchstabige Wort schließt sich an den vorderen Kanten zusammen?:",
+        "Finde den codierten Papierstreifen (Artefakt #6) an diesem Ort. Löse das Falt-Rätsel: Welches Lösungswort schließt sich zusammen?:",
       inputPlaceholder: "Lösungswort eingeben...",
       inputType: "text",
       correctCode: "SCHRAUBE",
@@ -448,18 +487,19 @@ export const STATIONS: Station[] = [
     title: "Station 13: Der thermische Gegenpol",
     icon: "Flame",
     storyIntro:
-      "Das Rätsel lautet: ‚Vom Eiskeller zum feurigen Gegenpol. Gesucht ist das technische Kraftwerk des Gebäudes, das heißes Wasser durch Rohre pumpt und das gesamte Anwesen wärmt.‘",
+      "Das feurige Gegenstück zum Eiskeller. Das pochende Kraftwerk, das heißes Lebensblut durch die Rohre pumpt und dem gesamten Anwesen Wärme spendet.",
     physicalTask: {
       taskType: "code",
       instruction:
-        "Untersuche den Heizkessel nach der Feuer-Karte (Artefakt #7). Sie ist das Gegenstück zur Kälte-Karte. Welche Wärmezahl steht darauf? (Nimm sie unbedingt mit in deinen Rucksack!):",
-      inputPlaceholder: "Wärme-Konstante...",
+        "Finde die Feuer-Karte (Artefakt #7) an diesem Ort. Sie ist das Gegenstück zur Kälte-Karte. Welche Zahl steht darauf? (Nimm sie unbedingt mit in deinen Rucksack!):",
+      inputPlaceholder: "Zahl eingeben...",
       inputType: "text",
       correctCode: "3",
       alternateCodes: ["73", "KESSEL", "WAERME", "FEUER"],
       decoys: {
         "29": "Falle erwischt! Am Kamin im Wohnzimmer lodert zwar Gemütlichkeit, aber das technische Kraftwerk steht im Heizungskeller!",
-        KAMIN: "Der Kamin wärmt das Sofa, aber das zentrale Heizkraftwerk liegt im Keller!",
+        KAMIN:
+          "Der Kamin wärmt das Sofa, aber das zentrale Heizkraftwerk liegt im Keller!",
         OFEN: "Nicht der Kaminofen oben! Gesucht ist der echte Heizkessel unten!",
       },
       hints: [
@@ -472,12 +512,13 @@ export const STATIONS: Station[] = [
       id: "feuerkarte",
       name: "Feuer-Karte",
       icon: "Flame",
-      description: "Elementar-Konstante II: WÄRME = 3. Das Gegenstück zur Kälte aus dem Eiskeller!",
+      description:
+        "Elementar-Konstante II: WÄRME = 3. Das Gegenstück zur Kälte aus dem Eiskeller!",
       stationAcquired: 13,
       badge: "WÄRME = 3",
     },
     unlockedStory:
-      "Heizungsraum decodiert! Wärme-Konstante 3 ist im Gepäck. Jetzt hast du beide Pole: Kälte (4) und Wärme (3)! Ein Wegweiser führt nach draußen zu den Motoren...",
+      "Heizungsraum decodiert! Wärme-Konstante 3 ist im Gepäck. Jetzt hast du beide Pole: Kälte (4) und Wärme (3)! Ein Wegweiser führt nach draußen zu den rollenden Gefährten...",
   },
   {
     id: "station_14_garage",
@@ -487,18 +528,19 @@ export const STATIONS: Station[] = [
     title: "Station 14: Die Maschinen-Halle",
     icon: "Car",
     storyIntro:
-      "Das Rätsel lautet: ‚Wo Motoren ruhen und Reifen lagern. Gesucht ist der geschützte Unterschlupf für rollende Gefährte mit großem Tor, Werkzeugwänden und Benzinduft.‘",
+      "Ein Tor zur Außenwelt, das den Geruch von Asphalt, Reifen und Benzin bewahrt. Hier ruht, was sonst mit hoher Geschwindigkeit die Straßen erobert.",
     physicalTask: {
       taskType: "code",
       instruction:
-        "Durchsuche die Garage nach der dort hinterlegten Hinweiskarte. Löse den Getriebe-Mechanismus vor Ort und gib das Lösungswort ein:",
+        "Finde das an diesem Ort hinterlegte Hinweiskärtchen. Löse das Rätsel und gib das Lösungswort ein:",
       inputPlaceholder: "Lösungswort eingeben...",
       inputType: "text",
       correctCode: "MOTOR",
       alternateCodes: ["89", "BOLIDE", "GARAGE", "ANTRIEB"],
       decoys: {
         "41": "Falle erwischt! Draußen unterm Carport pfeift der Wind! Der gesuchte Wagen-Unterschlupf hat vier feste Wände und ein großes Tor!",
-        CARPORT: "Der Carport ist nur ein Unterstand! Gesucht ist die geschlossene Garage!",
+        CARPORT:
+          "Der Carport ist nur ein Unterstand! Gesucht ist die geschlossene Garage!",
         EINFAHRT: "Auf der Einfahrt steht man im Regen! Geh in die Garage!",
       },
       hints: [
@@ -508,7 +550,7 @@ export const STATIONS: Station[] = [
       ],
     },
     unlockedStory:
-      "Getriebe decodiert! Das Wort MOTOR öffnet das Garagentor: ‚Der Schlüsselmeister hat die Garage verlassen und ist hinaus in die grüne Natur gewandert...‘",
+      "Getriebe decodiert! Das Wort MOTOR öffnet das Garagentor: ‚Der Schlüsselmeister hat den Unterschlupf verlassen und ist hinaus in die grüne Natur gewandert...‘",
   },
   {
     id: "station_15_garten",
@@ -518,19 +560,21 @@ export const STATIONS: Station[] = [
     title: "Station 15: Die unteilbare Natur",
     icon: "TreePine",
     storyIntro:
-      "Das Rätsel lautet: ‚Tritt hinaus unter den freien Himmel in das weiteste Areal des Grundstücks. Echtes Grün unter den Füßen, frische Luft und wachsende Natur.‘",
+      "Verlasse die Geborgenheit der Mauern. Echtes Grün unter den Sohlen, frischer Wind und weiter Horizont – die einzige Station unter freiem Himmelszelt.",
     physicalTask: {
       taskType: "code",
       instruction:
-        "Tritt hinaus in den Garten und finde das dort an einem Zweig oder Strauch befestigte Hinweiskärtchen. Entziffere die Botanik-Chiffre und gib das Lösungswort ein:",
+        "Finde das an diesem Ort versteckte Hinweiskärtchen. Entziffere die Botanik-Chiffre und gib das Lösungswort ein:",
       inputPlaceholder: "Lösungswort eingeben...",
       inputType: "text",
       correctCode: "FLORA",
       alternateCodes: ["37", "NATUR", "GARTEN", "GRUEN", "BLUME"],
       decoys: {
         "16": "Falle erwischt! Von oben herab auf die Blumen schauen zählt nicht! Geh mit beiden Füßen auf den echten Rasen in den Garten!",
-        BALKON: "Du stehst schon wieder auf dem Balkon! Geh runter auf den Rasen in den Garten!",
-        TERRASSE: "Bleib nicht auf den Steinplatten der Terrasse stehen, geh hinaus ins weite Grün!",
+        BALKON:
+          "Du stehst schon wieder auf dem Balkon! Geh runter auf den Rasen in den Garten!",
+        TERRASSE:
+          "Bleib nicht auf den Steinplatten der Terrasse stehen, geh hinaus ins weite Grün!",
       },
       hints: [
         "Gehe hinaus in den Garten und suche an einer Pflanze oder einem Baum nach der Karte.",
@@ -539,13 +583,14 @@ export const STATIONS: Station[] = [
       ],
       photoChallenge: {
         challengeTitle: "Natur-Power Selfie im Garten!",
-        prompt: "Knipse ein strahlendes Geburtstags-Selfie im Garten für deine Erinnerungswand!",
+        prompt:
+          "Knipse ein strahlendes Geburtstags-Selfie im Garten für deine Erinnerungswand!",
         badgeText: "Garten-Idylle",
         cameraFacing: "user",
       },
     },
     unlockedStory:
-      "Garten-Rätsel gelöst! Am Zweig flattert das vorletzte Kartenstück: ‚Der Schlüssel ist zurück im Haus! Folge dem Duft nach frischem Geburtstagskuchen in die Küche...‘",
+      "Garten-Rätsel gelöst! Am Zweig flattert das vorletzte Kartenstück: ‚Der Schlüssel ist zurück im Haus! Folge dem Duft nach frischem Geburtstagskuchen...‘",
   },
   {
     id: "station_16_kueche",
@@ -555,11 +600,11 @@ export const STATIONS: Station[] = [
     title: "Station 16: Die Fusion der Elemente & Der Schlüssel",
     icon: "Key",
     storyIntro:
-      "Das Rätsel lautet: ‚Folge der Spur der Düfte in die kulinarische Schaltzentrale des Hauses, wo gekocht, gebacken und vorbereitet wird. Hier hat der Schlüsselmeister den echten Schlüssel zur Schatzkammer verborgen!‘",
+      "Die kulinarische Schaltzentrale. Wo Hitze, Flammen und Aromen aufeinandertreffen: Hier hat der Schlüsselmeister das physische Pfand der Schatzkammer versiegelt.",
     physicalTask: {
       taskType: "code",
       instruction:
-        "KOMBI-RÄTSEL: Hier treffen die gesammelten Elemente zusammen! Kombiniere die Element-Konstanten aus deinem Rucksack mit den Kochzonen dieses Raumes:\n\nFormel: (KÄLTE × WÄRME) + Anzahl der Kochzonen auf dem Herd.\n\nGib den Master-Code ein, um das Schlüsselversteck in der Küche zu entriegeln:",
+        "KOMBI-RÄTSEL: Hier treffen deine gesammelten Elemente zusammen! Kombiniere die Element-Konstanten aus deinem Rucksack mit den Gegebenheiten an diesem Ort:\n\nFormel: (KÄLTE × WÄRME) + Anzahl der Kochzonen auf dem Herd.\n\nGib den Master-Code ein, um das Schlüsselversteck zu entriegeln:",
       inputPlaceholder: "Zahl eingeben...",
       inputType: "text",
       correctCode: "16",
@@ -569,7 +614,8 @@ export const STATIONS: Station[] = [
         "7": "Du hast addiert statt multipliziert! Formel: Erst (Kälte × Wärme), dann + Herdplatten!",
         "4": "Das ist nur die Kälte-Konstante aus dem Eiskeller!",
         "3": "Das ist nur die Wärme-Konstante vom Heizkessel!",
-        ESSTISCH: "Am Esstisch sitzt man gemütlich, aber die Töpfe kochen auf dem Herd!",
+        ESSTISCH:
+          "Am Esstisch sitzt man gemütlich, aber die Töpfe kochen auf dem Herd!",
       },
       hints: [
         "Schau in deinen Rucksack nach der Kälte- (4) und Wärme-Konstante (3).",
@@ -581,12 +627,13 @@ export const STATIONS: Station[] = [
       id: "schatzschluessel",
       name: "Schlüssel zur Schatzkammer",
       icon: "Key",
-      description: "Der echte physische Schlüssel zum Vorhängeschloss der Schatzkammer! Gefunden in der Küche.",
+      description:
+        "Der echte physische Schlüssel zum Vorhängeschloss der Schatzkammer! Gefunden in der Küche.",
       stationAcquired: 16,
       badge: "ECHTER SCHLÜSSEL",
     },
     unlockedStory:
-      "🗝️ DER ECHTE SCHLÜSSEL IST GEFUNDEN! Code 16 hat das Geheimfach geöffnet! Greife in der Küche hinter die Kaffeemaschine (oder in die Besteckschublade) – dort liegt der echte, physische Schlüssel zur Schatzkammer! Nimm ihn an dich! Doch welche Tür im ganzen Haus sperrt er auf? Wo liegt die geheime Schatzkammer? Eile ins Wohnzimmer für das finale Orts-Rätsel!",
+      "🗝️ DER ECHTE SCHLÜSSEL IST GEFUNDEN! Code 16 hat das Geheimfach geöffnet! Greife in der Küche hinter die Kaffeemaschine (oder in die Besteckschublade) – dort liegt der echte, physische Schlüssel zur Schatzkammer! Nimm ihn an dich! Doch welche Tür im ganzen Haus sperrt er auf? Wo liegt die geheime Schatzkammer? Eile zum gemütlichen Wohnbereich des Hauses für das finale Orts-Rätsel!",
   },
   {
     id: "station_17_wohnzimmer",
@@ -596,19 +643,30 @@ export const STATIONS: Station[] = [
     title: "Station 17: Das Geheimnis der Schatzkammer",
     icon: "Crown",
     storyIntro:
-      "Du hältst den echten Schlüssel zur Schatzkammer fest in deinen Händen – aber wo im Haus verbirgt sich die geheime Schatzkammer mit deinem Geburtstagsgeschenk? Welcher Raum wurde mit dem schweren Vorhängeschloss versiegelt?",
+      "Der Schlüssel liegt in deiner Hand, doch das Schloss harrt noch im Verborgenen. Kehre zurück in den gemütlichen Mittelpunkt des Hauses, um das finale Geheimnis zu entschlüsseln.",
     physicalTask: {
       taskType: "code",
       instruction:
-        "DAS FINALE ORTS-RÄTSEL: Um den genauen Raum der Schatzkammer zu enttarnen, vereine die zwei Grundzahlen deiner Reise:\n\n1. Dein Start-Code aus Station 1 (26)\n2. Der Küchen-Code aus Station 16 (16)\n\nAddiere beide Zahlen (26 + 16 = ?): Welcher Master-Code enthüllt, wo die Schatzkammer liegt?:",
+        "DAS FINALE ORTS-RÄTSEL: Um den genauen Raum der Schatzkammer zu enttarnen, vereine die zwei Grundzahlen deiner Reise:\n\n1. Dein Start-Code aus Station 1\n2. Dein gefundener Code aus Station 16\n\nAddiere beide Zahlen: Welcher Master-Code enthüllt, wo die Schatzkammer liegt?:",
       inputPlaceholder: "Mastercode eingeben...",
       inputType: "text",
       correctCode: "42",
-      alternateCodes: ["SCHATZKAMMER", "KELLER", "ALEXA26", "26", "16", "FINALE", "SCHATZ", "TUER", "VORHAENGESCHLOSS"],
+      alternateCodes: [
+        "SCHATZKAMMER",
+        "KELLER",
+        "ALEXA26",
+        "26",
+        "16",
+        "FINALE",
+        "SCHATZ",
+        "TUER",
+        "VORHAENGESCHLOSS",
+      ],
       decoys: {
         "90": "Falle erwischt! Das Finale und das Geheimnis der Schatzkammer warten hier!",
         BETT: "Zurück ins Bett geht es erst nach der Feier! Das Finale wartet im Wohnzimmer!",
-        "1234": "Zu gewöhnlich! Vereine deinen Start-Code (26) und deinen Küchen-Code (16)!",
+        "1234":
+          "Zu gewöhnlich! Vereine deinen Start-Code (26) und deinen Küchen-Code (16)!",
       },
       hints: [
         "Schau auf deine Start-Zahl (26) und die Küchen-Zahl (16).",

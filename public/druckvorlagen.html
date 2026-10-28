@@ -115,8 +115,6 @@
         background: var(--card-bg);
         box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         position: relative;
-        page-break-after: always;
-        break-after: page;
         overflow: hidden;
       }
 
@@ -322,7 +320,7 @@
       }
 
       .master-table td {
-        padding: 4px 6px;
+        padding: 3.5px 6px;
         border-bottom: 1px solid #e2e8f0;
         vertical-align: middle;
       }
@@ -447,12 +445,15 @@
           margin: 0;
         }
 
-        html, body {
+        html,
+        body {
           background: #ffffff !important;
           padding: 0 !important;
           margin: 0 !important;
-          width: 210mm !important;
-          height: 100% !important;
+          width: 100% !important;
+          height: auto !important;
+          min-height: auto !important;
+          overflow: visible !important;
           -webkit-print-color-adjust: exact !important;
           print-color-adjust: exact !important;
         }
@@ -465,16 +466,31 @@
         .a4-page {
           box-shadow: none !important;
           margin: 0 !important;
-          width: 210mm !important;
-          height: 297mm !important;
-          min-height: 297mm !important;
-          max-height: 297mm !important;
-          padding: 8mm 11mm !important;
-          page-break-after: always !important;
-          break-after: page !important;
+          width: 100% !important;
+          max-width: 210mm !important;
+          height: 286mm !important;
+          min-height: 0 !important;
+          max-height: 286mm !important;
+          padding: 6mm 10mm !important;
+          box-sizing: border-box !important;
           overflow: hidden !important;
+          break-inside: avoid !important;
+          page-break-inside: avoid !important;
+          break-after: auto !important;
+          page-break-after: auto !important;
           -webkit-print-color-adjust: exact !important;
           print-color-adjust: exact !important;
+        }
+
+        .a4-page + .a4-page {
+          break-before: page !important;
+          page-break-before: always !important;
+        }
+
+        .a4-page:last-child,
+        .a4-page:last-of-type {
+          break-after: auto !important;
+          page-break-after: auto !important;
         }
       }
 
@@ -601,9 +617,24 @@
       <div>
         <h1>🕵️ EXIT – Birthday Masterfile (Alexa 26)</h1>
         <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 4px">
-          Drucke diese 6 Seiten aus (Strg + P). Seite 1 bleibt beim Spielleiter. Seite 2 enthält Spezial-Artefakte. Seiten 3–6 enthalten die 8 Hinweiskarten (1 Karte/Zeile).
+          Drucke diese 6 Seiten aus (Strg + P). Seite 1 bleibt beim Spielleiter.
+          Seite 2 enthält Spezial-Artefakte. Seiten 3–6 enthalten die 8
+          Hinweiskarten (1 Karte/Zeile).
         </p>
-        <div style="margin-top: 6px; font-size: 0.8rem; background: #0f172a; padding: 6px 12px; border-radius: 6px; border: 1px solid #3b82f6; color: #93c5fd; display: inline-flex; align-items: center; gap: 8px;">
+        <div
+          style="
+            margin-top: 6px;
+            font-size: 0.8rem;
+            background: #0f172a;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid #3b82f6;
+            color: #93c5fd;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+          "
+        >
           <span>💡 <strong>Druck-Einstellungen im Browser:</strong></span>
           <span>Ränder: <strong>„Keine“</strong> (oder „Minimum“)</span>
           <span>·</span>
@@ -612,7 +643,11 @@
       </div>
       <div style="display: flex; align-items: center; gap: 12px">
         <div class="mode-switch">
-          <button id="btn-color" class="mode-btn active" onclick="toggleMode('color')">
+          <button
+            id="btn-color"
+            class="mode-btn active"
+            onclick="toggleMode('color')"
+          >
             🎨 Farbe
           </button>
           <button id="btn-bw" class="mode-btn" onclick="toggleMode('bw')">
@@ -629,23 +664,66 @@
     <div class="a4-page">
       <div class="page-header">
         <div class="page-title">EXIT – GEBURTSTAGS-EDITION: ALEXA 26</div>
-        <div class="page-badge">SEITE 1 · SPIELLEITER-MASTERPLAN &amp; FLOW (NICHT ZERSCHNEIDEN!)</div>
+        <div class="page-badge">
+          SEITE 1 · SPIELLEITER-MASTERPLAN &amp; FLOW (NICHT ZERSCHNEIDEN!)
+        </div>
       </div>
 
       <!-- Quick Setup Checklist -->
-      <div style="background: #f8fafc; border: 1.5px solid #0f172a; border-radius: 6px; padding: 7px 10px; margin-bottom: 6px;">
-        <div style="font-weight: 800; font-size: 0.73rem; color: #0f172a; margin-bottom: 3px; display: flex; justify-content: space-between;">
+      <div
+        style="
+          background: #f8fafc;
+          border: 1.5px solid #0f172a;
+          border-radius: 6px;
+          padding: 7px 10px;
+          margin-bottom: 6px;
+        "
+      >
+        <div
+          style="
+            font-weight: 800;
+            font-size: 0.73rem;
+            color: #0f172a;
+            margin-bottom: 3px;
+            display: flex;
+            justify-content: space-between;
+          "
+        >
           <span>⚡ QUICK-SETUP VOR DEM SPIELSTART (5 SCHRITTE)</span>
-          <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; color: #b45309;">STATUS: VORBEREITUNG</span>
+          <span
+            style="
+              font-family: &quot;JetBrains Mono&quot;, monospace;
+              font-size: 0.66rem;
+              color: #b45309;
+            "
+            >STATUS: VORBEREITUNG</span
+          >
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.62rem; line-height: 1.32; color: #334155;">
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-size: 0.62rem;
+            line-height: 1.32;
+            color: #334155;
+          "
+        >
           <div>
-            <strong>1. Schatzkammer verriegeln:</strong> Einen Kellerraum mit dem Vorhängeschloss abschließen. Den echten Schlüssel in der Küche (z. B. Kaffeemaschine) verstecken.<br />
-            <strong>2. Spezial-Artefakte platzieren (Seite 2):</strong> Faltblatt (St. 1), Tastatur-Schablone (St. 7), Spiegelkarte (St. 5), QR-Schild (St. 9), Eiskarte (St. 11), Faltband (St. 12), Flamme (St. 13).
+            <strong>1. Schatzkammer verriegeln:</strong> Einen Kellerraum mit
+            dem Vorhängeschloss abschließen. Den echten Schlüssel in der Küche
+            (z. B. Kaffeemaschine) verstecken.<br />
+            <strong>2. Spezial-Artefakte platzieren (Seite 2):</strong>
+            Faltblatt (St. 1), Tastatur-Schablone (St. 7), Spiegelkarte (St. 5),
+            QR-Schild (St. 9), Eiskarte (St. 11), Faltband (St. 12), Flamme (St.
+            13).
           </div>
           <div>
-            <strong>3. Hinweiskarten verstecken (Seiten 3 bis 6):</strong> Die 8 großen Kärtchen ausschneiden und an den im Plan genannten Verstecken deponieren.<br />
-            <strong>4. App starten:</strong> Spiel auf Smartphone/Tablet aufrufen, Ton an. Spielleiter behält diese Seite 1 als Spickzettel!
+            <strong>3. Hinweiskarten verstecken (Seiten 3 bis 6):</strong> Die 8
+            großen Kärtchen ausschneiden und an den im Plan genannten Verstecken
+            deponieren.<br />
+            <strong>4. App starten:</strong> Spiel auf Smartphone/Tablet
+            aufrufen, Ton an. Spielleiter behält diese Seite 1 als Spickzettel!
           </div>
         </div>
       </div>
@@ -654,12 +732,12 @@
       <table class="master-table">
         <thead>
           <tr>
-            <th style="width: 24px;">St.</th>
-            <th style="width: 95px;">Raum &amp; Zone</th>
+            <th style="width: 24px">St.</th>
+            <th style="width: 95px">Raum &amp; Zone</th>
             <th>Vorbereitung &amp; Versteck vor Ort</th>
-            <th style="width: 120px;">Physisches Material</th>
-            <th style="width: 90px;">Lösung / Code</th>
-            <th style="width: 110px;">Notfall-Tipp</th>
+            <th style="width: 120px">Physisches Material</th>
+            <th style="width: 90px">Lösung / Code</th>
+            <th style="width: 110px">Notfall-Tipp</th>
           </tr>
         </thead>
         <tbody>
@@ -786,7 +864,9 @@
           <tr>
             <td><strong>16</strong></td>
             <td>Küche (EG)</td>
-            <td>🔑 <strong>Schlüssel verstecken!</strong> (z. B. Kaffeemaschine)</td>
+            <td>
+              🔑 <strong>Schlüssel verstecken!</strong> (z. B. Kaffeemaschine)
+            </td>
             <td>Keine Karte (Inventar nötig)</td>
             <td><strong>16</strong></td>
             <td>(Kälte 4 &times; Wärme 3) + 4 Platten</td>
@@ -803,17 +883,72 @@
       </table>
 
       <!-- Special Mechanics & Finale Guide -->
-      <div style="margin-top: 6px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-        <div style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 6px; padding: 6px 8px; font-size: 0.63rem; line-height: 1.32; color: #166534;">
-          <strong style="color: #14532d; display: block; margin-bottom: 2px; font-size: 0.68rem;">🧭 RICHTUNGSRÄTSEL: APP-STEUERKREUZ (D-PAD)</strong>
-          An <strong>St. 3 (Stiege)</strong> und <strong>St. 10 (Einlieger)</strong> erscheint in der App ein 4-Wege-Steuerkreuz. Spieler tippen den Pfad vom START (🚪) zum ZIEL (🗝️) ab:<br />
-          &bull; <strong>St. 3 (Stiege):</strong> 2x Hoch, 1x Rechts, 1x Hoch &rarr; <strong>▲ ▲ ▶ ▲</strong><br />
-          &bull; <strong>St. 10 (Einlieger):</strong> 1x Links, 1x Runter, 1x Rechts, 1x Runter &rarr; <strong>◀ ▼ ▶ ▼</strong>
+      <div
+        style="
+          margin-top: 6px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+        "
+      >
+        <div
+          style="
+            background: #f0fdf4;
+            border: 1.5px solid #86efac;
+            border-radius: 6px;
+            padding: 6px 8px;
+            font-size: 0.63rem;
+            line-height: 1.32;
+            color: #166534;
+          "
+        >
+          <strong
+            style="
+              color: #14532d;
+              display: block;
+              margin-bottom: 2px;
+              font-size: 0.68rem;
+            "
+            >🧭 RICHTUNGSRÄTSEL: APP-STEUERKREUZ (D-PAD)</strong
+          >
+          An <strong>St. 3 (Stiege)</strong> und
+          <strong>St. 10 (Einlieger)</strong> erscheint in der App ein
+          4-Wege-Steuerkreuz. Spieler tippen den Pfad vom START (🚪) zum ZIEL
+          (🗝️) ab:<br />
+          &bull; <strong>St. 3 (Stiege):</strong> 2x Hoch, 1x Rechts, 1x Hoch
+          &rarr; <strong>▲ ▲ ▶ ▲</strong><br />
+          &bull; <strong>St. 10 (Einlieger):</strong> 1x Links, 1x Runter, 1x
+          Rechts, 1x Runter &rarr; <strong>◀ ▼ ▶ ▼</strong>
         </div>
-        <div style="background: #fffbeb; border: 1.5px solid #fde68a; border-radius: 6px; padding: 6px 8px; font-size: 0.63rem; line-height: 1.32; color: #92400e;">
-          <strong style="color: #78350f; display: block; margin-bottom: 2px; font-size: 0.68rem;">🏆 DAS FINALE: SCHLÜSSEL &amp; SCHATZKAMMER (St. 16 &amp; 17)</strong>
-          &bull; <strong>St. 16 (Küche):</strong> Formel (4 &times; 3) + 4 = <strong>16</strong> schaltet das Inventar-Item <em>„Schlüssel zur Schatzkammer“</em> frei. Alexa sucht und findet den physischen Schlüssel in der Küche.<br />
-          &bull; <strong>St. 17 (Wohnzimmer):</strong> Master-Code <strong>42</strong> lüftet das Geheimnis: Die Schatzkammer ist der versiegelte Kellerraum! Mit dem Küchen-Schlüssel öffnet Alexa das Vorhängeschloss!
+        <div
+          style="
+            background: #fffbeb;
+            border: 1.5px solid #fde68a;
+            border-radius: 6px;
+            padding: 6px 8px;
+            font-size: 0.63rem;
+            line-height: 1.32;
+            color: #92400e;
+          "
+        >
+          <strong
+            style="
+              color: #78350f;
+              display: block;
+              margin-bottom: 2px;
+              font-size: 0.68rem;
+            "
+            >🏆 DAS FINALE: SCHLÜSSEL &amp; SCHATZKAMMER (St. 16 &amp;
+            17)</strong
+          >
+          &bull; <strong>St. 16 (Küche):</strong> Formel (4 &times; 3) + 4 =
+          <strong>16</strong> schaltet das Inventar-Item
+          <em>„Schlüssel zur Schatzkammer“</em> frei. Alexa sucht und findet den
+          physischen Schlüssel in der Küche.<br />
+          &bull; <strong>St. 17 (Wohnzimmer):</strong> Master-Code
+          <strong>42</strong> lüftet das Geheimnis: Die Schatzkammer ist der
+          versiegelte Kellerraum! Mit dem Küchen-Schlüssel öffnet Alexa das
+          Vorhängeschloss!
         </div>
       </div>
     </div>
@@ -822,75 +957,331 @@
     <div class="a4-page">
       <div class="page-header">
         <div class="page-title">EXIT – GEBURTSTAGS-EDITION: ALEXA 26</div>
-        <div class="page-badge">SEITE 2 · PHYSISCHE SPEZIAL-ARTEFAKTE (ZUM AUSSCHNEIDEN)</div>
+        <div class="page-badge">
+          SEITE 2 · PHYSISCHE SPEZIAL-ARTEFAKTE (ZUM AUSSCHNEIDEN)
+        </div>
       </div>
 
       <!-- Cut-Out 1: Falt-Rätsel Schlafzimmer -->
-      <div class="cut-box" style="margin-bottom: 6px;">
+      <div class="cut-box" style="margin-bottom: 6px">
         <div class="cut-box-header">
-          <span class="cut-box-title">ARTEFAKT #1: DAS LICHTFRAGMENT (Station 1: Schlafzimmer)</span>
+          <span class="cut-box-title"
+            >ARTEFAKT #1: DAS LICHTFRAGMENT (Station 1: Schlafzimmer)</span
+          >
           <span>Versteck: Nachttischschublade · Ungefaltet ablegen</span>
         </div>
-        <div style="background: #fafaf9; padding: 6px; border: 1px solid #e2e8f0; border-radius: 6px;">
-          <svg viewBox="0 0 600 120" style="width: 100%; height: auto; display: block; background: #ffffff;">
-            <!-- Center Fold Line -->
-            <line x1="300" y1="0" x2="300" y2="120" stroke="#dc2626" stroke-width="2" stroke-dasharray="6,4" />
-            <text x="306" y="18" font-size="8" font-family="'JetBrains Mono', monospace" font-weight="bold" fill="#dc2626" letter-spacing="1">FALZ ⤹</text>
-
+        <div
+          style="
+            background: #fafaf9;
+            padding: 6px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+          "
+        >
+          <svg
+            viewBox="0 0 600 120"
+            style="
+              width: 100%;
+              height: auto;
+              display: block;
+              background: #ffffff;
+            "
+          >
             <!-- Decorative Accents -->
-            <circle cx="50" cy="60" r="12" fill="none" stroke="#cbd5e1" stroke-width="3" />
-            <circle cx="550" cy="60" r="12" fill="none" stroke="#cbd5e1" stroke-width="3" />
+            <circle
+              cx="50"
+              cy="60"
+              r="12"
+              fill="none"
+              stroke="#cbd5e1"
+              stroke-width="3"
+            />
+            <circle
+              cx="550"
+              cy="60"
+              r="12"
+              fill="none"
+              stroke="#cbd5e1"
+              stroke-width="3"
+            />
 
             <!-- Digit 2 Left: 3 Horizontals -->
-            <line x1="110" y1="24" x2="180" y2="24" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
-            <line x1="110" y1="60" x2="180" y2="60" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
-            <line x1="110" y1="96" x2="180" y2="96" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
+            <line
+              x1="110"
+              y1="24"
+              x2="180"
+              y2="24"
+              stroke="#0f172a"
+              stroke-width="11"
+              stroke-linecap="round"
+            />
+            <line
+              x1="110"
+              y1="60"
+              x2="180"
+              y2="60"
+              stroke="#0f172a"
+              stroke-width="11"
+              stroke-linecap="round"
+            />
+            <line
+              x1="110"
+              y1="96"
+              x2="180"
+              y2="96"
+              stroke="#0f172a"
+              stroke-width="11"
+              stroke-linecap="round"
+            />
 
             <!-- Digit 6 Left: Top, Left, Bottom -->
-            <line x1="205" y1="24" x2="275" y2="24" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
-            <line x1="205" y1="24" x2="205" y2="96" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
-            <line x1="205" y1="96" x2="275" y2="96" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
+            <line
+              x1="205"
+              y1="24"
+              x2="275"
+              y2="24"
+              stroke="#0f172a"
+              stroke-width="11"
+              stroke-linecap="round"
+            />
+            <line
+              x1="205"
+              y1="24"
+              x2="205"
+              y2="96"
+              stroke="#0f172a"
+              stroke-width="11"
+              stroke-linecap="round"
+            />
+            <line
+              x1="205"
+              y1="96"
+              x2="275"
+              y2="96"
+              stroke="#0f172a"
+              stroke-width="11"
+              stroke-linecap="round"
+            />
 
             <!-- Digit 2 Right: Top-right vertical (x=420) + Bottom-left vertical (x=490) -->
-            <line x1="420" y1="24" x2="420" y2="60" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
-            <line x1="490" y1="60" x2="490" y2="96" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
+            <line
+              x1="420"
+              y1="24"
+              x2="420"
+              y2="60"
+              stroke="#0f172a"
+              stroke-width="11"
+              stroke-linecap="round"
+            />
+            <line
+              x1="490"
+              y1="60"
+              x2="490"
+              y2="96"
+              stroke="#0f172a"
+              stroke-width="11"
+              stroke-linecap="round"
+            />
 
             <!-- Digit 6 Right: Middle bar + Bottom-right vertical (x=325 mirrors to x=275) -->
-            <line x1="325" y1="60" x2="395" y2="60" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
-            <line x1="325" y1="60" x2="325" y2="96" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
+            <line
+              x1="325"
+              y1="60"
+              x2="395"
+              y2="60"
+              stroke="#0f172a"
+              stroke-width="11"
+              stroke-linecap="round"
+            />
+            <line
+              x1="325"
+              y1="60"
+              x2="325"
+              y2="96"
+              stroke="#0f172a"
+              stroke-width="11"
+              stroke-linecap="round"
+            />
           </svg>
-          <div style="font-size: 0.58rem; color: #64748b; font-family: 'JetBrains Mono', monospace; text-align: center; margin-top: 3px;">
-            [ IN DER MITTE KNICKEN &amp; GEGEN DAS LICHT HALTEN &rarr; ENTHÜLLT DEN CODE ]
-          </div>
+
           <!-- Screen-Only Verification Helper (Hidden on Print) -->
-          <div class="no-print" style="margin-top: 5px; padding: 4px 8px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 4px; font-size: 0.65rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <span style="color: #475569;">💡 <strong>Gegenlicht-Prüfung (nur am Bildschirm):</strong></span>
-              <button onclick="toggleFoldSim()" style="background: #0f172a; color: #ffffff; border: none; padding: 2px 7px; border-radius: 3px; font-size: 0.62rem; cursor: pointer;">
+          <div
+            class="no-print"
+            style="
+              margin-top: 5px;
+              padding: 4px 8px;
+              background: #f8fafc;
+              border: 1px dashed #cbd5e1;
+              border-radius: 4px;
+              font-size: 0.65rem;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <span style="color: #475569"
+                >💡
+                <strong>Gegenlicht-Prüfung (nur am Bildschirm):</strong></span
+              >
+              <button
+                onclick="toggleFoldSim()"
+                style="
+                  background: #0f172a;
+                  color: #ffffff;
+                  border: none;
+                  padding: 2px 7px;
+                  border-radius: 3px;
+                  font-size: 0.62rem;
+                  cursor: pointer;
+                "
+              >
                 👁️ Gefaltetes Gegenlicht-Ergebnis einblenden
               </button>
             </div>
-            <div id="fold-sim-box" style="display: none; margin-top: 5px; text-align: center; background: #ffffff; padding: 6px; border-radius: 4px; border: 1px solid #94a3b8;">
-              <div style="font-size: 0.62rem; color: #059669; font-weight: 700; margin-bottom: 3px;">
-                ✓ Beim Falten nach hinten schmilzt rot (Rückseite) und schwarz (Vorderseite) exakt zu 26 zusammen:
+            <div
+              id="fold-sim-box"
+              style="
+                display: none;
+                margin-top: 5px;
+                text-align: center;
+                background: #ffffff;
+                padding: 6px;
+                border-radius: 4px;
+                border: 1px solid #94a3b8;
+              "
+            >
+              <div
+                style="
+                  font-size: 0.62rem;
+                  color: #059669;
+                  font-weight: 700;
+                  margin-bottom: 3px;
+                "
+              >
+                ✓ Beim Falten nach hinten schmilzt rot (Rückseite) und schwarz
+                (Vorderseite) exakt zu 26 zusammen:
               </div>
-              <svg viewBox="0 0 300 120" style="width: 240px; height: auto; display: block; margin: 0 auto; background: #ffffff;">
-                <circle cx="50" cy="60" r="12" fill="none" stroke="#cbd5e1" stroke-width="3" />
+              <svg
+                viewBox="0 0 300 120"
+                style="
+                  width: 240px;
+                  height: auto;
+                  display: block;
+                  margin: 0 auto;
+                  background: #ffffff;
+                "
+              >
+                <circle
+                  cx="50"
+                  cy="60"
+                  r="12"
+                  fill="none"
+                  stroke="#cbd5e1"
+                  stroke-width="3"
+                />
                 <!-- Digit 2: Left (Black) -->
-                <line x1="110" y1="24" x2="180" y2="24" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
-                <line x1="110" y1="60" x2="180" y2="60" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
-                <line x1="110" y1="96" x2="180" y2="96" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
+                <line
+                  x1="110"
+                  y1="24"
+                  x2="180"
+                  y2="24"
+                  stroke="#0f172a"
+                  stroke-width="11"
+                  stroke-linecap="round"
+                />
+                <line
+                  x1="110"
+                  y1="60"
+                  x2="180"
+                  y2="60"
+                  stroke="#0f172a"
+                  stroke-width="11"
+                  stroke-linecap="round"
+                />
+                <line
+                  x1="110"
+                  y1="96"
+                  x2="180"
+                  y2="96"
+                  stroke="#0f172a"
+                  stroke-width="11"
+                  stroke-linecap="round"
+                />
                 <!-- Digit 2: Right Folded (Red) -->
-                <line x1="180" y1="24" x2="180" y2="60" stroke="#dc2626" stroke-width="11" stroke-linecap="round" opacity="0.85" />
-                <line x1="110" y1="60" x2="110" y2="96" stroke="#dc2626" stroke-width="11" stroke-linecap="round" opacity="0.85" />
+                <line
+                  x1="180"
+                  y1="24"
+                  x2="180"
+                  y2="60"
+                  stroke="#dc2626"
+                  stroke-width="11"
+                  stroke-linecap="round"
+                  opacity="0.85"
+                />
+                <line
+                  x1="110"
+                  y1="60"
+                  x2="110"
+                  y2="96"
+                  stroke="#dc2626"
+                  stroke-width="11"
+                  stroke-linecap="round"
+                  opacity="0.85"
+                />
 
                 <!-- Digit 6: Left (Black) -->
-                <line x1="205" y1="24" x2="275" y2="24" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
-                <line x1="205" y1="24" x2="205" y2="96" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
-                <line x1="205" y1="96" x2="275" y2="96" stroke="#0f172a" stroke-width="11" stroke-linecap="round" />
+                <line
+                  x1="205"
+                  y1="24"
+                  x2="275"
+                  y2="24"
+                  stroke="#0f172a"
+                  stroke-width="11"
+                  stroke-linecap="round"
+                />
+                <line
+                  x1="205"
+                  y1="24"
+                  x2="205"
+                  y2="96"
+                  stroke="#0f172a"
+                  stroke-width="11"
+                  stroke-linecap="round"
+                />
+                <line
+                  x1="205"
+                  y1="96"
+                  x2="275"
+                  y2="96"
+                  stroke="#0f172a"
+                  stroke-width="11"
+                  stroke-linecap="round"
+                />
                 <!-- Digit 6: Right Folded (Red) -->
-                <line x1="205" y1="60" x2="275" y2="60" stroke="#dc2626" stroke-width="11" stroke-linecap="round" opacity="0.85" />
-                <line x1="275" y1="60" x2="275" y2="96" stroke="#dc2626" stroke-width="11" stroke-linecap="round" opacity="0.85" />
+                <line
+                  x1="205"
+                  y1="60"
+                  x2="275"
+                  y2="60"
+                  stroke="#dc2626"
+                  stroke-width="11"
+                  stroke-linecap="round"
+                  opacity="0.85"
+                />
+                <line
+                  x1="275"
+                  y1="60"
+                  x2="275"
+                  y2="96"
+                  stroke="#dc2626"
+                  stroke-width="11"
+                  stroke-linecap="round"
+                  opacity="0.85"
+                />
               </svg>
             </div>
           </div>
@@ -898,49 +1289,190 @@
       </div>
 
       <!-- Cut-Out 2: Tastatur-Chiffre Ankleide -->
-      <div class="cut-box" style="margin-bottom: 6px;">
+      <div class="cut-box" style="margin-bottom: 6px">
         <div class="cut-box-header">
-          <span class="cut-box-title">ARTEFAKT #2: DIE TASTATUR-SCHABLONE (Station 7: Ankleidezimmer)</span>
+          <span class="cut-box-title"
+            >ARTEFAKT #2: DIE TASTATUR-SCHABLONE (Station 7:
+            Ankleidezimmer)</span
+          >
           <span>Versteck: Ankleide / Schreibtisch · Tastatur bereitlegen</span>
         </div>
-        <div style="background: #ffffff; border: 2px solid #0f172a; border-radius: 6px; padding: 7px 12px;">
-          <div style="display: flex; justify-content: space-between; font-size: 0.6rem; color: #64748b; font-family: 'JetBrains Mono', monospace; margin-bottom: 5px;">
+        <div
+          style="
+            background: #ffffff;
+            border: 2px solid #0f172a;
+            border-radius: 6px;
+            padding: 7px 12px;
+          "
+        >
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              font-size: 0.6rem;
+              color: #64748b;
+              font-family: &quot;JetBrains Mono&quot;, monospace;
+              margin-bottom: 5px;
+            "
+          >
             <span>№ 702 · DEKODIER-PROTOKOLL</span>
-            <span style="letter-spacing: 2px">✦ TASTATUR-KOORDINATEN ✦</span>
+            <span style="letter-spacing: 2px">✦ KOORDINATEN ✦</span>
             <span>SYSTEM: QWERTZ</span>
           </div>
-          <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 5px;">
-            <div style="background: #0f172a; color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 1.05rem; font-weight: 900; padding: 3px 12px; border-radius: 4px;">C 4</div>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 10px;
+              margin-bottom: 5px;
+            "
+          >
+            <div
+              style="
+                background: #0f172a;
+                color: #ffffff;
+                font-family: &quot;JetBrains Mono&quot;, monospace;
+                font-size: 1.05rem;
+                font-weight: 900;
+                padding: 3px 12px;
+                border-radius: 4px;
+              "
+            >
+              C 4
+            </div>
             <span style="font-weight: 900; color: #94a3b8">·</span>
-            <div style="background: #0f172a; color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 1.05rem; font-weight: 900; padding: 3px 12px; border-radius: 4px;">B 9</div>
+            <div
+              style="
+                background: #0f172a;
+                color: #ffffff;
+                font-family: &quot;JetBrains Mono&quot;, monospace;
+                font-size: 1.05rem;
+                font-weight: 900;
+                padding: 3px 12px;
+                border-radius: 4px;
+              "
+            >
+              B 9
+            </div>
             <span style="font-weight: 900; color: #94a3b8">·</span>
-            <div style="background: #0f172a; color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 1.05rem; font-weight: 900; padding: 3px 12px; border-radius: 4px;">C 8</div>
+            <div
+              style="
+                background: #0f172a;
+                color: #ffffff;
+                font-family: &quot;JetBrains Mono&quot;, monospace;
+                font-size: 1.05rem;
+                font-weight: 900;
+                padding: 3px 12px;
+                border-radius: 4px;
+              "
+            >
+              C 8
+            </div>
             <span style="font-weight: 900; color: #94a3b8">·</span>
-            <div style="background: #0f172a; color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 1.05rem; font-weight: 900; padding: 3px 12px; border-radius: 4px;">B 7</div>
+            <div
+              style="
+                background: #0f172a;
+                color: #ffffff;
+                font-family: &quot;JetBrains Mono&quot;, monospace;
+                font-size: 1.05rem;
+                font-weight: 900;
+                padding: 3px 12px;
+                border-radius: 4px;
+              "
+            >
+              B 7
+            </div>
             <span style="font-weight: 900; color: #94a3b8">·</span>
-            <div style="background: #0f172a; color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 1.05rem; font-weight: 900; padding: 3px 12px; border-radius: 4px;">C 2</div>
+            <div
+              style="
+                background: #0f172a;
+                color: #ffffff;
+                font-family: &quot;JetBrains Mono&quot;, monospace;
+                font-size: 1.05rem;
+                font-weight: 900;
+                padding: 3px 12px;
+                border-radius: 4px;
+              "
+            >
+              C 2
+            </div>
           </div>
-          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed #cbd5e1; padding-top: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: #64748b;">
-            <span>REFERENZ: PC-TASTATUR (QWERTZ)</span>
-            <span style="letter-spacing: 1px; font-weight: 700; color: #0f172a">✦ REFERENZ: C1 = A ✦</span>
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              border-top: 1px dashed #cbd5e1;
+              padding-top: 4px;
+              font-family: &quot;JetBrains Mono&quot;, monospace;
+              font-size: 0.65rem;
+              color: #64748b;
+            "
+          >
+            <span></span>
+            <span style="letter-spacing: 1px; font-weight: 700; color: #0f172a"
+              >✦ REFERENZ: C1 = A ✦</span
+            >
             <span>LÖSUNGSWORT: [ _ _ _ _ _ ]</span>
           </div>
         </div>
       </div>
 
       <!-- Cut-Out 3: Spiegel-Code (Volle Breite) -->
-      <div class="cut-box" style="margin-bottom: 6px;">
+      <div class="cut-box" style="margin-bottom: 6px">
         <div class="cut-box-header">
-          <span class="cut-box-title">ARTEFAKT #3: DIGITAL-CHYFFRE (Station 5: Großes Bad)</span>
+          <span class="cut-box-title"
+            >ARTEFAKT #3: DIGITAL-CHYFFRE (Station 5: Großes Bad)</span
+          >
           <span>Hinter dem Badezimmerspiegel / Handtuch platzieren</span>
         </div>
-        <div style="background: #f8fafc; border: 1.5px solid #0f172a; border-radius: 6px; padding: 6px 12px; text-align: center;">
-          <svg viewBox="0 0 340 50" style="width: 100%; max-width: 440px; height: auto; display: block; margin: 0 auto; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 4px;">
+        <div
+          style="
+            background: #f8fafc;
+            border: 1.5px solid #0f172a;
+            border-radius: 6px;
+            padding: 6px 12px;
+            text-align: center;
+          "
+        >
+          <svg
+            viewBox="0 0 340 50"
+            style="
+              width: 100%;
+              max-width: 440px;
+              height: auto;
+              display: block;
+              margin: 0 auto;
+              background: #ffffff;
+              border: 1px solid #cbd5e1;
+              border-radius: 4px;
+            "
+          >
             <!-- Left mirrored text: CODE (spells Ǝ ᗡ O Ɔ) -->
             <g transform="translate(55, 33) scale(-1, 1)">
-              <text x="0" y="0" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="900" fill="#0f172a" letter-spacing="3">CODE</text>
+              <text
+                x="0"
+                y="0"
+                text-anchor="middle"
+                font-family="'JetBrains Mono', monospace"
+                font-size="18"
+                font-weight="900"
+                fill="#0f172a"
+                letter-spacing="3"
+              >
+                CODE
+              </text>
             </g>
-            <line x1="105" y1="25" x2="120" y2="25" stroke="#0f172a" stroke-width="3" stroke-linecap="round" />
+            <line
+              x1="105"
+              y1="25"
+              x2="120"
+              y2="25"
+              stroke="#0f172a"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
             <!-- Digit 5 -->
             <g id="spiegel-5-1">
               <polygon points="142,8 162,8 158,13 146,13" fill="#0f172a" />
@@ -949,7 +1481,10 @@
               <polygon points="142,44 162,44 158,39 146,39" fill="#0f172a" />
               <polygon points="140,28 140,42 145,38 145,31" fill="#e2e8f0" />
               <polygon points="140,10 140,24 145,21 145,14" fill="#0f172a" />
-              <polygon points="143,26 146,23 157,23 161,26 157,29 146,29" fill="#0f172a" />
+              <polygon
+                points="143,26 146,23 157,23 161,26 157,29 146,29"
+                fill="#0f172a"
+              />
             </g>
             <!-- Digit 5 -->
             <g id="spiegel-5-2">
@@ -959,85 +1494,223 @@
               <polygon points="184,44 204,44 200,39 188,39" fill="#0f172a" />
               <polygon points="182,28 182,42 187,38 187,31" fill="#e2e8f0" />
               <polygon points="182,10 182,24 187,21 187,14" fill="#0f172a" />
-              <polygon points="185,26 188,23 199,23 203,26 199,29 188,29" fill="#0f172a" />
+              <polygon
+                points="185,26 188,23 199,23 203,26 199,29 188,29"
+                fill="#0f172a"
+              />
             </g>
-            <line x1="225" y1="25" x2="240" y2="25" stroke="#0f172a" stroke-width="3" stroke-linecap="round" />
+            <line
+              x1="225"
+              y1="25"
+              x2="240"
+              y2="25"
+              stroke="#0f172a"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
             <!-- Right mirrored text: BAD (spells ᗡ A ᙠ) -->
             <g transform="translate(285, 33) scale(-1, 1)">
-              <text x="0" y="0" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="900" fill="#0f172a" letter-spacing="3">BAD</text>
+              <text
+                x="0"
+                y="0"
+                text-anchor="middle"
+                font-family="'JetBrains Mono', monospace"
+                font-size="18"
+                font-weight="900"
+                fill="#0f172a"
+                letter-spacing="3"
+              >
+                BAD
+              </text>
             </g>
           </svg>
-          <div style="font-size: 0.58rem; color: #64748b; font-family: 'JetBrains Mono', monospace; margin-top: 3px;">
+          <div
+            style="
+              font-size: 0.58rem;
+              color: #64748b;
+              font-family: &quot;JetBrains Mono&quot;, monospace;
+              margin-top: 3px;
+            "
+          >
             [ DIGITAL-CHYFFRE № 502 · ARMATUREN-SERIENNUMMER ]
           </div>
         </div>
       </div>
 
       <!-- Cut-Out 4: QR-Schild (Volle Breite mit echtem 231x231 scannbarem QR-Code) -->
-      <div class="cut-box" style="margin-bottom: 6px;">
+      <div class="cut-box" style="margin-bottom: 6px">
         <div class="cut-box-header">
-          <span class="cut-box-title">ARTEFAKT #4: DAS KONTROLL-SCHILD (Station 9: Großer Flur)</span>
+          <span class="cut-box-title"
+            >ARTEFAKT #4: DAS KONTROLL-SCHILD (Station 9: Großer Flur)</span
+          >
           <span>An der Jackenleiste / großen Garderobe befestigen</span>
         </div>
-        <div style="background: #ffffff; border: 2px solid #0f172a; border-radius: 6px; padding: 8px 14px; display: flex; align-items: center; gap: 16px;">
+        <div
+          style="
+            background: #ffffff;
+            border: 2px solid #0f172a;
+            border-radius: 6px;
+            padding: 8px 14px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+          "
+        >
           <!-- 100% Authentic Scannable QR Code Vector for ALEXA_FLUR_26 -->
-          <div style="width: 74px; height: 74px; flex-shrink: 0; border: 1.5px solid #0f172a; border-radius: 4px; padding: 2px; background: #ffffff;">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 231 231" style="width: 100%; height: 100%; display: block;">
-              <rect style="fill:#ffffff" x="0" y="0" width="231" height="231" />
-              <path style="fill:#0f172a" d="M 0,0 l 11,0 0,11 -11,0 z M 11,0 l 11,0 0,11 -11,0 z M 22,0 l 11,0 0,11 -11,0 z M 33,0 l 11,0 0,11 -11,0 z M 44,0 l 11,0 0,11 -11,0 z M 55,0 l 11,0 0,11 -11,0 z M 66,0 l 11,0 0,11 -11,0 z M 110,0 l 11,0 0,11 -11,0 z M 121,0 l 11,0 0,11 -11,0 z M 132,0 l 11,0 0,11 -11,0 z M 154,0 l 11,0 0,11 -11,0 z M 165,0 l 11,0 0,11 -11,0 z M 176,0 l 11,0 0,11 -11,0 z M 187,0 l 11,0 0,11 -11,0 z M 198,0 l 11,0 0,11 -11,0 z M 209,0 l 11,0 0,11 -11,0 z M 220,0 l 11,0 0,11 -11,0 z M 0,11 l 11,0 0,11 -11,0 z M 66,11 l 11,0 0,11 -11,0 z M 88,11 l 11,0 0,11 -11,0 z M 99,11 l 11,0 0,11 -11,0 z M 110,11 l 11,0 0,11 -11,0 z M 132,11 l 11,0 0,11 -11,0 z M 154,11 l 11,0 0,11 -11,0 z M 220,11 l 11,0 0,11 -11,0 z M 0,22 l 11,0 0,11 -11,0 z M 22,22 l 11,0 0,11 -11,0 z M 33,22 l 11,0 0,11 -11,0 z M 44,22 l 11,0 0,11 -11,0 z M 66,22 l 11,0 0,11 -11,0 z M 110,22 l 11,0 0,11 -11,0 z M 121,22 l 11,0 0,11 -11,0 z M 132,22 l 11,0 0,11 -11,0 z M 154,22 l 11,0 0,11 -11,0 z M 176,22 l 11,0 0,11 -11,0 z M 187,22 l 11,0 0,11 -11,0 z M 198,22 l 11,0 0,11 -11,0 z M 220,22 l 11,0 0,11 -11,0 z M 0,33 l 11,0 0,11 -11,0 z M 22,33 l 11,0 0,11 -11,0 z M 33,33 l 11,0 0,11 -11,0 z M 44,33 l 11,0 0,11 -11,0 z M 66,33 l 11,0 0,11 -11,0 z M 88,33 l 11,0 0,11 -11,0 z M 99,33 l 11,0 0,11 -11,0 z M 132,33 l 11,0 0,11 -11,0 z M 154,33 l 11,0 0,11 -11,0 z M 176,33 l 11,0 0,11 -11,0 z M 187,33 l 11,0 0,11 -11,0 z M 198,33 l 11,0 0,11 -11,0 z M 220,33 l 11,0 0,11 -11,0 z M 0,44 l 11,0 0,11 -11,0 z M 22,44 l 11,0 0,11 -11,0 z M 33,44 l 11,0 0,11 -11,0 z M 44,44 l 11,0 0,11 -11,0 z M 66,44 l 11,0 0,11 -11,0 z M 99,44 l 11,0 0,11 -11,0 z M 132,44 l 11,0 0,11 -11,0 z M 154,44 l 11,0 0,11 -11,0 z M 176,44 l 11,0 0,11 -11,0 z M 187,44 l 11,0 0,11 -11,0 z M 198,44 l 11,0 0,11 -11,0 z M 220,44 l 11,0 0,11 -11,0 z M 0,55 l 11,0 0,11 -11,0 z M 66,55 l 11,0 0,11 -11,0 z M 88,55 l 11,0 0,11 -11,0 z M 121,55 l 11,0 0,11 -11,0 z M 154,55 l 11,0 0,11 -11,0 z M 220,55 l 11,0 0,11 -11,0 z M 0,66 l 11,0 0,11 -11,0 z M 11,66 l 11,0 0,11 -11,0 z M 22,66 l 11,0 0,11 -11,0 z M 33,66 l 11,0 0,11 -11,0 z M 44,66 l 11,0 0,11 -11,0 z M 55,66 l 11,0 0,11 -11,0 z M 66,66 l 11,0 0,11 -11,0 z M 88,66 l 11,0 0,11 -11,0 z M 110,66 l 11,0 0,11 -11,0 z M 132,66 l 11,0 0,11 -11,0 z M 154,66 l 11,0 0,11 -11,0 z M 165,66 l 11,0 0,11 -11,0 z M 176,66 l 11,0 0,11 -11,0 z M 187,66 l 11,0 0,11 -11,0 z M 198,66 l 11,0 0,11 -11,0 z M 209,66 l 11,0 0,11 -11,0 z M 220,66 l 11,0 0,11 -11,0 z M 99,77 l 11,0 0,11 -11,0 z M 0,88 l 11,0 0,11 -11,0 z M 11,88 l 11,0 0,11 -11,0 z M 22,88 l 11,0 0,11 -11,0 z M 33,88 l 11,0 0,11 -11,0 z M 44,88 l 11,0 0,11 -11,0 z M 66,88 l 11,0 0,11 -11,0 z M 77,88 l 11,0 0,11 -11,0 z M 88,88 l 11,0 0,11 -11,0 z M 121,88 l 11,0 0,11 -11,0 z M 143,88 l 11,0 0,11 -11,0 z M 165,88 l 11,0 0,11 -11,0 z M 187,88 l 11,0 0,11 -11,0 z M 209,88 l 11,0 0,11 -11,0 z M 11,99 l 11,0 0,11 -11,0 z M 33,99 l 11,0 0,11 -11,0 z M 44,99 l 11,0 0,11 -11,0 z M 77,99 l 11,0 0,11 -11,0 z M 99,99 l 11,0 0,11 -11,0 z M 110,99 l 11,0 0,11 -11,0 z M 132,99 l 11,0 0,11 -11,0 z M 143,99 l 11,0 0,11 -11,0 z M 154,99 l 11,0 0,11 -11,0 z M 165,99 l 11,0 0,11 -11,0 z M 187,99 l 11,0 0,11 -11,0 z M 33,110 l 11,0 0,11 -11,0 z M 44,110 l 11,0 0,11 -11,0 z M 66,110 l 11,0 0,11 -11,0 z M 99,110 l 11,0 0,11 -11,0 z M 132,110 l 11,0 0,11 -11,0 z M 198,110 l 11,0 0,11 -11,0 z M 209,110 l 11,0 0,11 -11,0 z M 11,121 l 11,0 0,11 -11,0 z M 55,121 l 11,0 0,11 -11,0 z M 88,121 l 11,0 0,11 -11,0 z M 99,121 l 11,0 0,11 -11,0 z M 110,121 l 11,0 0,11 -11,0 z M 143,121 l 11,0 0,11 -11,0 z M 165,121 l 11,0 0,11 -11,0 z M 176,121 l 11,0 0,11 -11,0 z M 187,121 l 11,0 0,11 -11,0 z M 198,121 l 11,0 0,11 -11,0 z M 209,121 l 11,0 0,11 -11,0 z M 11,132 l 11,0 0,11 -11,0 z M 22,132 l 11,0 0,11 -11,0 z M 33,132 l 11,0 0,11 -11,0 z M 44,132 l 11,0 0,11 -11,0 z M 66,132 l 11,0 0,11 -11,0 z M 99,132 l 11,0 0,11 -11,0 z M 110,132 l 11,0 0,11 -11,0 z M 121,132 l 11,0 0,11 -11,0 z M 132,132 l 11,0 0,11 -11,0 z M 143,132 l 11,0 0,11 -11,0 z M 198,132 l 11,0 0,11 -11,0 z M 88,143 l 11,0 0,11 -11,0 z M 121,143 l 11,0 0,11 -11,0 z M 143,143 l 11,0 0,11 -11,0 z M 165,143 l 11,0 0,11 -11,0 z M 187,143 l 11,0 0,11 -11,0 z M 198,143 l 11,0 0,11 -11,0 z M 0,154 l 11,0 0,11 -11,0 z M 11,154 l 11,0 0,11 -11,0 z M 22,154 l 11,0 0,11 -11,0 z M 33,154 l 11,0 0,11 -11,0 z M 44,154 l 11,0 0,11 -11,0 z M 55,154 l 11,0 0,11 -11,0 z M 66,154 l 11,0 0,11 -11,0 z M 88,154 l 11,0 0,11 -11,0 z M 99,154 l 11,0 0,11 -11,0 z M 132,154 l 11,0 0,11 -11,0 z M 143,154 l 11,0 0,11 -11,0 z M 187,154 l 11,0 0,11 -11,0 z M 198,154 l 11,0 0,11 -11,0 z M 209,154 l 11,0 0,11 -11,0 z M 0,165 l 11,0 0,11 -11,0 z M 66,165 l 11,0 0,11 -11,0 z M 99,165 l 11,0 0,11 -11,0 z M 143,165 l 11,0 0,11 -11,0 z M 176,165 l 11,0 0,11 -11,0 z M 187,165 l 11,0 0,11 -11,0 z M 198,165 l 11,0 0,11 -11,0 z M 209,165 l 11,0 0,11 -11,0 z M 0,176 l 11,0 0,11 -11,0 z M 22,176 l 11,0 0,11 -11,0 z M 33,176 l 11,0 0,11 -11,0 z M 44,176 l 11,0 0,11 -11,0 z M 66,176 l 11,0 0,11 -11,0 z M 88,176 l 11,0 0,11 -11,0 z M 99,176 l 11,0 0,11 -11,0 z M 110,176 l 11,0 0,11 -11,0 z M 132,176 l 11,0 0,11 -11,0 z M 143,176 l 11,0 0,11 -11,0 z M 176,176 l 11,0 0,11 -11,0 z M 187,176 l 11,0 0,11 -11,0 z M 198,176 l 11,0 0,11 -11,0 z M 209,176 l 11,0 0,11 -11,0 z M 220,176 l 11,0 0,11 -11,0 z M 0,187 l 11,0 0,11 -11,0 z M 22,187 l 11,0 0,11 -11,0 z M 33,187 l 11,0 0,11 -11,0 z M 44,187 l 11,0 0,11 -11,0 z M 66,187 l 11,0 0,11 -11,0 z M 88,187 l 11,0 0,11 -11,0 z M 99,187 l 11,0 0,11 -11,0 z M 121,187 l 11,0 0,11 -11,0 z M 0,198 l 11,0 0,11 -11,0 z M 22,198 l 11,0 0,11 -11,0 z M 33,198 l 11,0 0,11 -11,0 z M 44,198 l 11,0 0,11 -11,0 z M 66,198 l 11,0 0,11 -11,0 z M 88,198 l 11,0 0,11 -11,0 z M 132,198 l 11,0 0,11 -11,0 z M 154,198 l 11,0 0,11 -11,0 z M 198,198 l 11,0 0,11 -11,0 z M 0,209 l 11,0 0,11 -11,0 z M 66,209 l 11,0 0,11 -11,0 z M 88,209 l 11,0 0,11 -11,0 z M 99,209 l 11,0 0,11 -11,0 z M 110,209 l 11,0 0,11 -11,0 z M 121,209 l 11,0 0,11 -11,0 z M 143,209 l 11,0 0,11 -11,0 z M 187,209 l 11,0 0,11 -11,0 z M 198,209 l 11,0 0,11 -11,0 z M 0,220 l 11,0 0,11 -11,0 z M 11,220 l 11,0 0,11 -11,0 z M 22,220 l 11,0 0,11 -11,0 z M 33,220 l 11,0 0,11 -11,0 z M 44,220 l 11,0 0,11 -11,0 z M 55,220 l 11,0 0,11 -11,0 z M 66,220 l 11,0 0,11 -11,0 z M 88,220 l 11,0 0,11 -11,0 z M 99,220 l 11,0 0,11 -11,0 z M 110,220 l 11,0 0,11 -11,0 z M 121,220 l 11,0 0,11 -11,0 z M 143,220 l 11,0 0,11 -11,0 z M 165,220 l 11,0 0,11 -11,0 z M 198,220 l 11,0 0,11 -11,0 z M 209,220 l 11,0 0,11 -11,0 z " />
+          <div
+            style="
+              width: 74px;
+              height: 74px;
+              flex-shrink: 0;
+              border: 1.5px solid #0f172a;
+              border-radius: 4px;
+              padding: 2px;
+              background: #ffffff;
+            "
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 231 231"
+              style="width: 100%; height: 100%; display: block"
+            >
+              <rect
+                style="fill: #ffffff"
+                x="0"
+                y="0"
+                width="231"
+                height="231"
+              />
+              <path
+                style="fill: #0f172a"
+                d="M 0,0 l 11,0 0,11 -11,0 z M 11,0 l 11,0 0,11 -11,0 z M 22,0 l 11,0 0,11 -11,0 z M 33,0 l 11,0 0,11 -11,0 z M 44,0 l 11,0 0,11 -11,0 z M 55,0 l 11,0 0,11 -11,0 z M 66,0 l 11,0 0,11 -11,0 z M 110,0 l 11,0 0,11 -11,0 z M 121,0 l 11,0 0,11 -11,0 z M 132,0 l 11,0 0,11 -11,0 z M 154,0 l 11,0 0,11 -11,0 z M 165,0 l 11,0 0,11 -11,0 z M 176,0 l 11,0 0,11 -11,0 z M 187,0 l 11,0 0,11 -11,0 z M 198,0 l 11,0 0,11 -11,0 z M 209,0 l 11,0 0,11 -11,0 z M 220,0 l 11,0 0,11 -11,0 z M 0,11 l 11,0 0,11 -11,0 z M 66,11 l 11,0 0,11 -11,0 z M 88,11 l 11,0 0,11 -11,0 z M 99,11 l 11,0 0,11 -11,0 z M 110,11 l 11,0 0,11 -11,0 z M 132,11 l 11,0 0,11 -11,0 z M 154,11 l 11,0 0,11 -11,0 z M 220,11 l 11,0 0,11 -11,0 z M 0,22 l 11,0 0,11 -11,0 z M 22,22 l 11,0 0,11 -11,0 z M 33,22 l 11,0 0,11 -11,0 z M 44,22 l 11,0 0,11 -11,0 z M 66,22 l 11,0 0,11 -11,0 z M 110,22 l 11,0 0,11 -11,0 z M 121,22 l 11,0 0,11 -11,0 z M 132,22 l 11,0 0,11 -11,0 z M 154,22 l 11,0 0,11 -11,0 z M 176,22 l 11,0 0,11 -11,0 z M 187,22 l 11,0 0,11 -11,0 z M 198,22 l 11,0 0,11 -11,0 z M 220,22 l 11,0 0,11 -11,0 z M 0,33 l 11,0 0,11 -11,0 z M 22,33 l 11,0 0,11 -11,0 z M 33,33 l 11,0 0,11 -11,0 z M 44,33 l 11,0 0,11 -11,0 z M 66,33 l 11,0 0,11 -11,0 z M 88,33 l 11,0 0,11 -11,0 z M 99,33 l 11,0 0,11 -11,0 z M 132,33 l 11,0 0,11 -11,0 z M 154,33 l 11,0 0,11 -11,0 z M 176,33 l 11,0 0,11 -11,0 z M 187,33 l 11,0 0,11 -11,0 z M 198,33 l 11,0 0,11 -11,0 z M 220,33 l 11,0 0,11 -11,0 z M 0,44 l 11,0 0,11 -11,0 z M 22,44 l 11,0 0,11 -11,0 z M 33,44 l 11,0 0,11 -11,0 z M 44,44 l 11,0 0,11 -11,0 z M 66,44 l 11,0 0,11 -11,0 z M 99,44 l 11,0 0,11 -11,0 z M 132,44 l 11,0 0,11 -11,0 z M 154,44 l 11,0 0,11 -11,0 z M 176,44 l 11,0 0,11 -11,0 z M 187,44 l 11,0 0,11 -11,0 z M 198,44 l 11,0 0,11 -11,0 z M 220,44 l 11,0 0,11 -11,0 z M 0,55 l 11,0 0,11 -11,0 z M 66,55 l 11,0 0,11 -11,0 z M 88,55 l 11,0 0,11 -11,0 z M 121,55 l 11,0 0,11 -11,0 z M 154,55 l 11,0 0,11 -11,0 z M 220,55 l 11,0 0,11 -11,0 z M 0,66 l 11,0 0,11 -11,0 z M 11,66 l 11,0 0,11 -11,0 z M 22,66 l 11,0 0,11 -11,0 z M 33,66 l 11,0 0,11 -11,0 z M 44,66 l 11,0 0,11 -11,0 z M 55,66 l 11,0 0,11 -11,0 z M 66,66 l 11,0 0,11 -11,0 z M 88,66 l 11,0 0,11 -11,0 z M 110,66 l 11,0 0,11 -11,0 z M 132,66 l 11,0 0,11 -11,0 z M 154,66 l 11,0 0,11 -11,0 z M 165,66 l 11,0 0,11 -11,0 z M 176,66 l 11,0 0,11 -11,0 z M 187,66 l 11,0 0,11 -11,0 z M 198,66 l 11,0 0,11 -11,0 z M 209,66 l 11,0 0,11 -11,0 z M 220,66 l 11,0 0,11 -11,0 z M 99,77 l 11,0 0,11 -11,0 z M 0,88 l 11,0 0,11 -11,0 z M 11,88 l 11,0 0,11 -11,0 z M 22,88 l 11,0 0,11 -11,0 z M 33,88 l 11,0 0,11 -11,0 z M 44,88 l 11,0 0,11 -11,0 z M 66,88 l 11,0 0,11 -11,0 z M 77,88 l 11,0 0,11 -11,0 z M 88,88 l 11,0 0,11 -11,0 z M 121,88 l 11,0 0,11 -11,0 z M 143,88 l 11,0 0,11 -11,0 z M 165,88 l 11,0 0,11 -11,0 z M 187,88 l 11,0 0,11 -11,0 z M 209,88 l 11,0 0,11 -11,0 z M 11,99 l 11,0 0,11 -11,0 z M 33,99 l 11,0 0,11 -11,0 z M 44,99 l 11,0 0,11 -11,0 z M 77,99 l 11,0 0,11 -11,0 z M 99,99 l 11,0 0,11 -11,0 z M 110,99 l 11,0 0,11 -11,0 z M 132,99 l 11,0 0,11 -11,0 z M 143,99 l 11,0 0,11 -11,0 z M 154,99 l 11,0 0,11 -11,0 z M 165,99 l 11,0 0,11 -11,0 z M 187,99 l 11,0 0,11 -11,0 z M 33,110 l 11,0 0,11 -11,0 z M 44,110 l 11,0 0,11 -11,0 z M 66,110 l 11,0 0,11 -11,0 z M 99,110 l 11,0 0,11 -11,0 z M 132,110 l 11,0 0,11 -11,0 z M 198,110 l 11,0 0,11 -11,0 z M 209,110 l 11,0 0,11 -11,0 z M 11,121 l 11,0 0,11 -11,0 z M 55,121 l 11,0 0,11 -11,0 z M 88,121 l 11,0 0,11 -11,0 z M 99,121 l 11,0 0,11 -11,0 z M 110,121 l 11,0 0,11 -11,0 z M 143,121 l 11,0 0,11 -11,0 z M 165,121 l 11,0 0,11 -11,0 z M 176,121 l 11,0 0,11 -11,0 z M 187,121 l 11,0 0,11 -11,0 z M 198,121 l 11,0 0,11 -11,0 z M 209,121 l 11,0 0,11 -11,0 z M 11,132 l 11,0 0,11 -11,0 z M 22,132 l 11,0 0,11 -11,0 z M 33,132 l 11,0 0,11 -11,0 z M 44,132 l 11,0 0,11 -11,0 z M 66,132 l 11,0 0,11 -11,0 z M 99,132 l 11,0 0,11 -11,0 z M 110,132 l 11,0 0,11 -11,0 z M 121,132 l 11,0 0,11 -11,0 z M 132,132 l 11,0 0,11 -11,0 z M 143,132 l 11,0 0,11 -11,0 z M 198,132 l 11,0 0,11 -11,0 z M 88,143 l 11,0 0,11 -11,0 z M 121,143 l 11,0 0,11 -11,0 z M 143,143 l 11,0 0,11 -11,0 z M 165,143 l 11,0 0,11 -11,0 z M 187,143 l 11,0 0,11 -11,0 z M 198,143 l 11,0 0,11 -11,0 z M 0,154 l 11,0 0,11 -11,0 z M 11,154 l 11,0 0,11 -11,0 z M 22,154 l 11,0 0,11 -11,0 z M 33,154 l 11,0 0,11 -11,0 z M 44,154 l 11,0 0,11 -11,0 z M 55,154 l 11,0 0,11 -11,0 z M 66,154 l 11,0 0,11 -11,0 z M 88,154 l 11,0 0,11 -11,0 z M 99,154 l 11,0 0,11 -11,0 z M 132,154 l 11,0 0,11 -11,0 z M 143,154 l 11,0 0,11 -11,0 z M 187,154 l 11,0 0,11 -11,0 z M 198,154 l 11,0 0,11 -11,0 z M 209,154 l 11,0 0,11 -11,0 z M 0,165 l 11,0 0,11 -11,0 z M 66,165 l 11,0 0,11 -11,0 z M 99,165 l 11,0 0,11 -11,0 z M 143,165 l 11,0 0,11 -11,0 z M 176,165 l 11,0 0,11 -11,0 z M 187,165 l 11,0 0,11 -11,0 z M 198,165 l 11,0 0,11 -11,0 z M 209,165 l 11,0 0,11 -11,0 z M 0,176 l 11,0 0,11 -11,0 z M 22,176 l 11,0 0,11 -11,0 z M 33,176 l 11,0 0,11 -11,0 z M 44,176 l 11,0 0,11 -11,0 z M 66,176 l 11,0 0,11 -11,0 z M 88,176 l 11,0 0,11 -11,0 z M 99,176 l 11,0 0,11 -11,0 z M 110,176 l 11,0 0,11 -11,0 z M 132,176 l 11,0 0,11 -11,0 z M 143,176 l 11,0 0,11 -11,0 z M 176,176 l 11,0 0,11 -11,0 z M 187,176 l 11,0 0,11 -11,0 z M 198,176 l 11,0 0,11 -11,0 z M 209,176 l 11,0 0,11 -11,0 z M 220,176 l 11,0 0,11 -11,0 z M 0,187 l 11,0 0,11 -11,0 z M 22,187 l 11,0 0,11 -11,0 z M 33,187 l 11,0 0,11 -11,0 z M 44,187 l 11,0 0,11 -11,0 z M 66,187 l 11,0 0,11 -11,0 z M 88,187 l 11,0 0,11 -11,0 z M 99,187 l 11,0 0,11 -11,0 z M 121,187 l 11,0 0,11 -11,0 z M 0,198 l 11,0 0,11 -11,0 z M 22,198 l 11,0 0,11 -11,0 z M 33,198 l 11,0 0,11 -11,0 z M 44,198 l 11,0 0,11 -11,0 z M 66,198 l 11,0 0,11 -11,0 z M 88,198 l 11,0 0,11 -11,0 z M 132,198 l 11,0 0,11 -11,0 z M 154,198 l 11,0 0,11 -11,0 z M 198,198 l 11,0 0,11 -11,0 z M 0,209 l 11,0 0,11 -11,0 z M 66,209 l 11,0 0,11 -11,0 z M 88,209 l 11,0 0,11 -11,0 z M 99,209 l 11,0 0,11 -11,0 z M 110,209 l 11,0 0,11 -11,0 z M 121,209 l 11,0 0,11 -11,0 z M 143,209 l 11,0 0,11 -11,0 z M 187,209 l 11,0 0,11 -11,0 z M 198,209 l 11,0 0,11 -11,0 z M 0,220 l 11,0 0,11 -11,0 z M 11,220 l 11,0 0,11 -11,0 z M 22,220 l 11,0 0,11 -11,0 z M 33,220 l 11,0 0,11 -11,0 z M 44,220 l 11,0 0,11 -11,0 z M 55,220 l 11,0 0,11 -11,0 z M 66,220 l 11,0 0,11 -11,0 z M 88,220 l 11,0 0,11 -11,0 z M 99,220 l 11,0 0,11 -11,0 z M 110,220 l 11,0 0,11 -11,0 z M 121,220 l 11,0 0,11 -11,0 z M 143,220 l 11,0 0,11 -11,0 z M 165,220 l 11,0 0,11 -11,0 z M 198,220 l 11,0 0,11 -11,0 z M 209,220 l 11,0 0,11 -11,0 z "
+              />
             </svg>
           </div>
-          <div style="flex: 1; min-width: 0;">
-            <div style="font-weight: 800; font-size: 0.88rem; color: #0f172a; line-height: 1.2; margin-bottom: 2px;">
+          <div style="flex: 1; min-width: 0">
+            <div
+              style="
+                font-weight: 800;
+                font-size: 0.88rem;
+                color: #0f172a;
+                line-height: 1.2;
+                margin-bottom: 2px;
+              "
+            >
               GROSSE GARDEROBE
             </div>
-            <div style="font-size: 0.65rem; color: #64748b; margin-bottom: 6px;">
-              Mit der Handy-Kamera scannen &ndash; oder Not-Code manuell eingeben
+            <div style="font-size: 0.65rem; color: #64748b; margin-bottom: 6px">
+              Mit der Handy-Kamera scannen &ndash; oder Not-Code manuell
+              eingeben
             </div>
-            <div style="display: inline-flex; align-items: center; gap: 8px; background: #f1f5f9; border: 1.5px dashed #cbd5e1; border-radius: 4px; padding: 3px 10px;">
-              <span style="font-size: 0.65rem; font-weight: 700; color: #64748b; font-family: 'JetBrains Mono', monospace;">NOT-CODE:</span>
-              <span style="font-size: 0.95rem; font-weight: 900; color: #0f172a; font-family: 'JetBrains Mono', monospace; letter-spacing: 2px;">95</span>
+            <div
+              style="
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                background: #f1f5f9;
+                border: 1.5px dashed #cbd5e1;
+                border-radius: 4px;
+                padding: 3px 10px;
+              "
+            >
+              <span
+                style="
+                  font-size: 0.65rem;
+                  font-weight: 700;
+                  color: #64748b;
+                  font-family: &quot;JetBrains Mono&quot;, monospace;
+                "
+                >NOT-CODE:</span
+              >
+              <span
+                style="
+                  font-size: 0.95rem;
+                  font-weight: 900;
+                  color: #0f172a;
+                  font-family: &quot;JetBrains Mono&quot;, monospace;
+                  letter-spacing: 2px;
+                "
+                >95</span
+              >
             </div>
           </div>
         </div>
       </div>
 
       <!-- Cut-Out 5: Zick-Zack-Faltband Werkbank -->
-      <div class="cut-box" style="margin-bottom: 6px;">
+      <div class="cut-box" style="margin-bottom: 6px">
         <div class="cut-box-header">
-          <span class="cut-box-title">ARTEFAKT #6: DAS KANTEN-FALTBAND (Station 12: Werkbank / Schraubstock)</span>
-          <span>✂ Streifen ausschneiden · Im Zick-Zack falten (▲ Berg / ▼ Tal)</span>
+          <span class="cut-box-title"
+            >ARTEFAKT #6: DAS KANTEN-FALTBAND (Station 12: Werkbank /
+            Schraubstock)</span
+          >
+          <span
+            >✂ Streifen ausschneiden · Im Zick-Zack falten (▲ Berg / ▼
+            Tal)</span
+          >
         </div>
-        <div style="background: #ffffff; border: 1.5px solid #0f172a; border-radius: 6px; padding: 6px 10px;">
+        <div
+          style="
+            background: #ffffff;
+            border: 1.5px solid #0f172a;
+            border-radius: 6px;
+            padding: 6px 10px;
+          "
+        >
           <div class="fold-ribbon">
-            <div class="fold-cell"><span class="fold-tick">▲</span><span class="fold-char">S</span></div>
-            <div class="fold-cell"><span class="fold-tick">▼</span><span class="fold-char">X</span></div>
-            <div class="fold-cell"><span class="fold-tick">▲</span><span class="fold-char">C</span></div>
-            <div class="fold-cell"><span class="fold-tick">▼</span><span class="fold-char">T</span></div>
-            <div class="fold-cell"><span class="fold-tick">▲</span><span class="fold-char">H</span></div>
-            <div class="fold-cell"><span class="fold-tick">▼</span><span class="fold-char">M</span></div>
-            <div class="fold-cell"><span class="fold-tick">▲</span><span class="fold-char">R</span></div>
-            <div class="fold-cell"><span class="fold-tick">▼</span><span class="fold-char">P</span></div>
-            <div class="fold-cell"><span class="fold-tick">▲</span><span class="fold-char">A</span></div>
-            <div class="fold-cell"><span class="fold-tick">▼</span><span class="fold-char">W</span></div>
-            <div class="fold-cell"><span class="fold-tick">▲</span><span class="fold-char">U</span></div>
-            <div class="fold-cell"><span class="fold-tick">▼</span><span class="fold-char">Y</span></div>
-            <div class="fold-cell"><span class="fold-tick">▲</span><span class="fold-char">B</span></div>
-            <div class="fold-cell"><span class="fold-tick">▼</span><span class="fold-char">Z</span></div>
-            <div class="fold-cell"><span class="fold-tick">▲</span><span class="fold-char">E</span></div>
-          </div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 3px; font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; color: #64748b;">
-            <span>[ ANLEITUNG: LEPORELLO-FALZ · ▲ VORN / ▼ HINTEN ]</span>
-            <span style="font-weight: 700; color: #0f172a">✦ DIE VORDEREN KANTEN ENTHÜLLEN: SCHRAUBE ✦</span>
-            <span>[ 8 BUCHSTABEN ]</span>
+            <div class="fold-cell">
+              <span class="fold-tick">▲</span><span class="fold-char">S</span>
+            </div>
+            <div class="fold-cell">
+              <span class="fold-tick">▼</span><span class="fold-char">X</span>
+            </div>
+            <div class="fold-cell">
+              <span class="fold-tick">▲</span><span class="fold-char">C</span>
+            </div>
+            <div class="fold-cell">
+              <span class="fold-tick">▼</span><span class="fold-char">T</span>
+            </div>
+            <div class="fold-cell">
+              <span class="fold-tick">▲</span><span class="fold-char">H</span>
+            </div>
+            <div class="fold-cell">
+              <span class="fold-tick">▼</span><span class="fold-char">M</span>
+            </div>
+            <div class="fold-cell">
+              <span class="fold-tick">▲</span><span class="fold-char">R</span>
+            </div>
+            <div class="fold-cell">
+              <span class="fold-tick">▼</span><span class="fold-char">P</span>
+            </div>
+            <div class="fold-cell">
+              <span class="fold-tick">▲</span><span class="fold-char">A</span>
+            </div>
+            <div class="fold-cell">
+              <span class="fold-tick">▼</span><span class="fold-char">W</span>
+            </div>
+            <div class="fold-cell">
+              <span class="fold-tick">▲</span><span class="fold-char">U</span>
+            </div>
+            <div class="fold-cell">
+              <span class="fold-tick">▼</span><span class="fold-char">Y</span>
+            </div>
+            <div class="fold-cell">
+              <span class="fold-tick">▲</span><span class="fold-char">B</span>
+            </div>
+            <div class="fold-cell">
+              <span class="fold-tick">▼</span><span class="fold-char">Z</span>
+            </div>
+            <div class="fold-cell">
+              <span class="fold-tick">▲</span><span class="fold-char">E</span>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Row 2 Columns: Kälte & Feuer Karten -->
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px">
         <!-- Kälte-Karte -->
-        <div class="cut-box" style="margin-bottom: 0;">
+        <div class="cut-box" style="margin-bottom: 0">
           <div class="cut-box-header">
             <span class="cut-box-title">ARTEFAKT #5: DIE KÄLTE-KARTE</span>
             <span>St. 11: Eiskeller · Mitnehmen!</span>
@@ -1045,14 +1718,24 @@
           <div class="element-card">
             <div class="element-icon-box cold-box">❄️</div>
             <div class="element-info">
-              <span style="font-size: 0.6rem; font-weight: 700; color: #0284c7; text-transform: uppercase;">Elementar-Konstante I</span>
-              <span style="font-size: 1.15rem; font-weight: 900; color: #0f172a;">KÄLTE = 4</span>
+              <span
+                style="
+                  font-size: 0.6rem;
+                  font-weight: 700;
+                  color: #0284c7;
+                  text-transform: uppercase;
+                "
+                >Elementar-Konstante I</span
+              >
+              <span style="font-size: 1.15rem; font-weight: 900; color: #0f172a"
+                >KÄLTE = 4</span
+              >
             </div>
           </div>
         </div>
 
         <!-- Feuer-Karte -->
-        <div class="cut-box" style="margin-bottom: 0;">
+        <div class="cut-box" style="margin-bottom: 0">
           <div class="cut-box-header">
             <span class="cut-box-title">ARTEFAKT #7: DIE FEUER-KARTE</span>
             <span>St. 13: Heizung · Mitnehmen!</span>
@@ -1060,8 +1743,18 @@
           <div class="element-card">
             <div class="element-icon-box heat-box">🔥</div>
             <div class="element-info">
-              <span style="font-size: 0.6rem; font-weight: 700; color: #ea580c; text-transform: uppercase;">Elementar-Konstante II</span>
-              <span style="font-size: 1.15rem; font-weight: 900; color: #0f172a;">WÄRME = 3</span>
+              <span
+                style="
+                  font-size: 0.6rem;
+                  font-weight: 700;
+                  color: #ea580c;
+                  text-transform: uppercase;
+                "
+                >Elementar-Konstante II</span
+              >
+              <span style="font-size: 1.15rem; font-weight: 900; color: #0f172a"
+                >WÄRME = 3</span
+              >
             </div>
           </div>
         </div>
@@ -1072,11 +1765,35 @@
     <div class="a4-page">
       <div class="page-header">
         <div class="page-title">EXIT – GEBURTSTAGS-EDITION: ALEXA 26</div>
-        <div class="page-badge">SEITE 3 · GROSSE RAUM-HINWEISKARTEN (TEIL 1)</div>
+        <div class="page-badge">
+          SEITE 3 · GROSSE RAUM-HINWEISKARTEN (TEIL 1)
+        </div>
       </div>
-      <div style="font-size: 0.64rem; color: #475569; margin-bottom: 6px; background: #f8fafc; border: 1px dashed #cbd5e1; padding: 4px 8px; border-radius: 4px; display: flex; justify-content: space-between;">
-        <span>✂️ <strong>Anleitung:</strong> Diese 2 großen Kärtchen ausschneiden und an den Verstecken deponieren.</span>
-        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: #64748b;">LÖSUNGEN: St. 2: BALLON · St. 3: ▲▲▶▲</span>
+      <div
+        style="
+          font-size: 0.64rem;
+          color: #475569;
+          margin-bottom: 6px;
+          background: #f8fafc;
+          border: 1px dashed #cbd5e1;
+          padding: 4px 8px;
+          border-radius: 4px;
+          display: flex;
+          justify-content: space-between;
+        "
+      >
+        <span
+          >✂️ <strong>Anleitung:</strong> Diese 2 großen Kärtchen ausschneiden
+          und an den Verstecken deponieren.</span
+        >
+        <span
+          style="
+            font-family: &quot;JetBrains Mono&quot;, monospace;
+            font-size: 0.6rem;
+            color: #64748b;
+          "
+          >LÖSUNGEN: St. 2: BALLON · St. 3: ▲▲▶▲</span
+        >
       </div>
 
       <div class="card-grid-1col">
@@ -1087,27 +1804,104 @@
             <span class="row-card-loc">Im Korb der Heißluftballon-Lampe</span>
           </div>
           <div class="row-card-body">
-            <svg viewBox="0 0 90 90" style="width: 100px; height: 100px; flex-shrink: 0;">
-              <path d="M 45 6 C 24 6, 18 30, 35 56 L 39 63 L 51 63 L 55 56 C 72 30, 66 6, 45 6 Z" fill="#ffffff" stroke="#0f172a" stroke-width="2" />
-              <path d="M 45 6 C 35 18, 35 48, 40 63" fill="none" stroke="#d97706" stroke-width="1.8" />
-              <path d="M 45 6 C 55 18, 55 48, 50 63" fill="none" stroke="#d97706" stroke-width="1.8" />
-              <path d="M 45 6 L 45 63" fill="none" stroke="#0284c7" stroke-width="1.8" />
+            <svg
+              viewBox="0 0 90 90"
+              style="width: 100px; height: 100px; flex-shrink: 0"
+            >
+              <path
+                d="M 45 6 C 24 6, 18 30, 35 56 L 39 63 L 51 63 L 55 56 C 72 30, 66 6, 45 6 Z"
+                fill="#ffffff"
+                stroke="#0f172a"
+                stroke-width="2"
+              />
+              <path
+                d="M 45 6 C 35 18, 35 48, 40 63"
+                fill="none"
+                stroke="#d97706"
+                stroke-width="1.8"
+              />
+              <path
+                d="M 45 6 C 55 18, 55 48, 50 63"
+                fill="none"
+                stroke="#d97706"
+                stroke-width="1.8"
+              />
+              <path
+                d="M 45 6 L 45 63"
+                fill="none"
+                stroke="#0284c7"
+                stroke-width="1.8"
+              />
               <circle cx="45" cy="65" r="2.5" fill="#ea580c" />
-              <line x1="39" y1="63" x2="41" y2="72" stroke="#64748b" stroke-width="1.5" />
-              <line x1="51" y1="63" x2="49" y2="72" stroke="#64748b" stroke-width="1.5" />
-              <rect x="39" y="72" width="12" height="10" rx="1.5" fill="#b45309" stroke="#0f172a" stroke-width="1.5" />
-              <line x1="39" y1="77" x2="51" y2="77" stroke="#ffffff" stroke-width="1.2" stroke-dasharray="2,1" />
+              <line
+                x1="39"
+                y1="63"
+                x2="41"
+                y2="72"
+                stroke="#64748b"
+                stroke-width="1.5"
+              />
+              <line
+                x1="51"
+                y1="63"
+                x2="49"
+                y2="72"
+                stroke="#64748b"
+                stroke-width="1.5"
+              />
+              <rect
+                x="39"
+                y="72"
+                width="12"
+                height="10"
+                rx="1.5"
+                fill="#b45309"
+                stroke="#0f172a"
+                stroke-width="1.5"
+              />
+              <line
+                x1="39"
+                y1="77"
+                x2="51"
+                y2="77"
+                stroke="#ffffff"
+                stroke-width="1.2"
+                stroke-dasharray="2,1"
+              />
             </svg>
-            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px;">
+            <div
+              style="
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 8px;
+              "
+            >
               <div>
-                <strong style="color: #0f172a; font-size: 0.95rem; display: block; margin-bottom: 3px;">✦ DIE MONTGOLFIÈRE AM HIMMEL ✦</strong>
-                <p style="font-size: 0.8rem; line-height: 1.4; color: #334155;">
-                  <em>„Keine Flügel, kein Motor &ndash; nur heiße Luft und ein Korb für kühne Entdecker.“</em><br />
+                <strong
+                  style="
+                    color: #0f172a;
+                    font-size: 0.95rem;
+                    display: block;
+                    margin-bottom: 3px;
+                  "
+                  >✦ DIE MONTGOLFIÈRE AM HIMMEL ✦</strong
+                >
+                <p style="font-size: 0.8rem; line-height: 1.4; color: #334155">
+                  <em
+                    >„Keine Flügel, kein Motor &ndash; nur heiße Luft und ein
+                    Korb für kühne Entdecker.“</em
+                  ><br />
                   Welches Fluggefährt schwebt über dir auf dem Balkon?
                 </p>
               </div>
-              <div style="border-top: 1px dashed #cbd5e1; padding-top: 8px;">
-                <div style="font-size: 0.72rem; color: #64748b; margin-bottom: 6px;">Bringe die 6 Buchstaben der Gondel in Reihe:</div>
+              <div style="border-top: 1px dashed #cbd5e1; padding-top: 8px">
+                <div
+                  style="font-size: 0.72rem; color: #64748b; margin-bottom: 6px"
+                >
+                  Bringe die 6 Buchstaben der Gondel in Reihe:
+                </div>
                 <div class="tile-row">
                   <span class="char-tile">L</span>
                   <span class="char-tile">O</span>
@@ -1116,13 +1910,29 @@
                   <span class="char-tile">N</span>
                   <span class="char-tile">L</span>
                 </div>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 700; color: #0284c7; margin-top: 6px;">
+                <div
+                  style="
+                    font-family: &quot;JetBrains Mono&quot;, monospace;
+                    font-size: 0.85rem;
+                    font-weight: 700;
+                    color: #0284c7;
+                    margin-top: 6px;
+                  "
+                >
                   Lösungswort: [ _ _ _ _ _ _ ]
                 </div>
               </div>
             </div>
           </div>
-          <div style="font-size: 0.6rem; color: #94a3b8; font-family: 'JetBrains Mono', monospace; text-align: center; margin-top: 4px;">
+          <div
+            style="
+              font-size: 0.6rem;
+              color: #94a3b8;
+              font-family: &quot;JetBrains Mono&quot;, monospace;
+              text-align: center;
+              margin-top: 4px;
+            "
+          >
             [ ARTEFAKT-KARTE № 02 · BALKON ]
           </div>
         </div>
@@ -1135,16 +1945,41 @@
           </div>
           <div class="row-card-body">
             <!-- Big Stair Maze SVG: Grid of 3 cols x 4 rows -->
-            <svg viewBox="0 0 100 85" style="width: 120px; height: 95px; flex-shrink: 0; background: #0f172a; border-radius: 6px; padding: 4px;">
+            <svg
+              viewBox="0 0 100 85"
+              style="
+                width: 120px;
+                height: 95px;
+                flex-shrink: 0;
+                background: #0f172a;
+                border-radius: 6px;
+                padding: 4px;
+              "
+            >
               <!-- Row 1: Wall, Ziel 🗝️, Wall -->
               <rect x="2" y="2" width="28" height="18" fill="#1e293b" />
               <rect x="34" y="2" width="28" height="18" fill="#0284c7" rx="3" />
-              <text x="48" y="15" font-size="11" text-anchor="middle" fill="#fff">🗝️</text>
+              <text
+                x="48"
+                y="15"
+                font-size="11"
+                text-anchor="middle"
+                fill="#fff"
+              >
+                🗝️
+              </text>
               <rect x="66" y="2" width="28" height="18" fill="#1e293b" />
 
               <!-- Row 2: Weg, Weg, Wall -->
               <rect x="2" y="23" width="28" height="18" fill="#334155" rx="3" />
-              <rect x="34" y="23" width="28" height="18" fill="#334155" rx="3" />
+              <rect
+                x="34"
+                y="23"
+                width="28"
+                height="18"
+                fill="#334155"
+                rx="3"
+              />
               <rect x="66" y="23" width="28" height="18" fill="#1e293b" />
 
               <!-- Row 3: Weg, Wall, Wall -->
@@ -1154,31 +1989,72 @@
 
               <!-- Row 4: Start 🚪, Wall, Wall -->
               <rect x="2" y="65" width="28" height="18" fill="#10b981" rx="3" />
-              <text x="16" y="78" font-size="11" text-anchor="middle" fill="#fff">🚪</text>
+              <text
+                x="16"
+                y="78"
+                font-size="11"
+                text-anchor="middle"
+                fill="#fff"
+              >
+                🚪
+              </text>
               <rect x="34" y="65" width="28" height="18" fill="#1e293b" />
               <rect x="66" y="65" width="28" height="18" fill="#1e293b" />
             </svg>
-            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px;">
+            <div
+              style="
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 8px;
+              "
+            >
               <div>
-                <strong style="color: #0f172a; font-size: 0.95rem; display: block; margin-bottom: 3px;">✦ DER STIEGEN-PFAD ✦</strong>
-                <p style="font-size: 0.8rem; line-height: 1.4; color: #334155;">
-                  Folge dem hellen Trittpfad von <strong>START 🚪</strong> hinauf zum <strong>ZIEL 🗝️</strong>.<br />
+                <strong
+                  style="
+                    color: #0f172a;
+                    font-size: 0.95rem;
+                    display: block;
+                    margin-bottom: 3px;
+                  "
+                  >✦ DER STIEGEN-PFAD ✦</strong
+                >
+                <p style="font-size: 0.8rem; line-height: 1.4; color: #334155">
+                  Folge dem hellen Trittpfad von
+                  <strong>START 🚪</strong> hinauf zum
+                  <strong>ZIEL 🗝️</strong>.<br />
                   Jeder Schritt entspricht einer Richtung auf den Stufen.
                 </p>
               </div>
-              <div style="border-top: 1px dashed #cbd5e1; padding-top: 8px;">
-                <div style="font-size: 0.72rem; color: #64748b; margin-bottom: 6px;">Tippe die 4 Schritte der Reihe nach im Steuerkreuz (D-Pad) der App ein:</div>
+              <div style="border-top: 1px dashed #cbd5e1; padding-top: 8px">
+                <div
+                  style="font-size: 0.72rem; color: #64748b; margin-bottom: 6px"
+                >
+                  Tippe die 4 Schritte der Reihe nach im Steuerkreuz (D-Pad) der
+                  App ein:
+                </div>
                 <div class="tile-row">
                   <span class="char-tile blue">▲</span>
                   <span class="char-tile blue">▲</span>
                   <span class="char-tile blue">▶</span>
                   <span class="char-tile blue">▲</span>
                 </div>
-                <div style="font-size: 0.7rem; color: #64748b; margin-top: 6px;">(Hoch &rarr; Hoch &rarr; Rechts &rarr; Hoch)</div>
+                <div style="font-size: 0.7rem; color: #64748b; margin-top: 6px">
+                  (Hoch &rarr; Hoch &rarr; Rechts &rarr; Hoch)
+                </div>
               </div>
             </div>
           </div>
-          <div style="font-size: 0.6rem; color: #94a3b8; font-family: 'JetBrains Mono', monospace; text-align: center; margin-top: 4px;">
+          <div
+            style="
+              font-size: 0.6rem;
+              color: #94a3b8;
+              font-family: &quot;JetBrains Mono&quot;, monospace;
+              text-align: center;
+              margin-top: 4px;
+            "
+          >
             [ ARTEFAKT-KARTE № 03 · STIEGE ]
           </div>
         </div>
@@ -1189,39 +2065,113 @@
     <div class="a4-page">
       <div class="page-header">
         <div class="page-title">EXIT – GEBURTSTAGS-EDITION: ALEXA 26</div>
-        <div class="page-badge">SEITE 4 · GROSSE RAUM-HINWEISKARTEN (TEIL 2)</div>
+        <div class="page-badge">
+          SEITE 4 · GROSSE RAUM-HINWEISKARTEN (TEIL 2)
+        </div>
       </div>
-      <div style="font-size: 0.64rem; color: #475569; margin-bottom: 6px; background: #f8fafc; border: 1px dashed #cbd5e1; padding: 4px 8px; border-radius: 4px; display: flex; justify-content: space-between;">
-        <span>✂️ <strong>Anleitung:</strong> Diese 2 großen Kärtchen ausschneiden und an den Verstecken deponieren.</span>
-        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: #64748b;">LÖSUNGEN: St. 4: HIMMEL · St. 6: VORRAT (Diagonal)</span>
+      <div
+        style="
+          font-size: 0.64rem;
+          color: #475569;
+          margin-bottom: 6px;
+          background: #f8fafc;
+          border: 1px dashed #cbd5e1;
+          padding: 4px 8px;
+          border-radius: 4px;
+          display: flex;
+          justify-content: space-between;
+        "
+      >
+        <span
+          >✂️ <strong>Anleitung:</strong> Diese 2 großen Kärtchen ausschneiden
+          und an den Verstecken deponieren.</span
+        >
+        <span
+          style="
+            font-family: &quot;JetBrains Mono&quot;, monospace;
+            font-size: 0.6rem;
+            color: #64748b;
+          "
+          >LÖSUNGEN: St. 4: HIMMEL · St. 6: VORRAT (Diagonal)</span
+        >
       </div>
 
       <div class="card-grid-1col">
         <!-- Big Card 3: Dachwohnung (Station 4) -->
         <div class="row-cut-box">
           <div class="row-card-header">
-            <span class="row-card-title">HINWEISKARTE: DACHWOHNUNG (St. 4)</span>
+            <span class="row-card-title"
+              >HINWEISKARTE: DACHWOHNUNG (St. 4)</span
+            >
             <span class="row-card-loc">Fensterbank / schräges Dachfenster</span>
           </div>
           <div class="row-card-body">
-            <svg viewBox="0 0 95 75" style="width: 110px; height: 85px; flex-shrink: 0;">
-              <polygon points="8,70 85,15 85,70" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
-              <polygon points="24,55 68,24 76,35 32,66" fill="#ffffff" stroke="#0f172a" stroke-width="2" />
+            <svg
+              viewBox="0 0 95 75"
+              style="width: 110px; height: 85px; flex-shrink: 0"
+            >
+              <polygon
+                points="8,70 85,15 85,70"
+                fill="#ffffff"
+                stroke="#cbd5e1"
+                stroke-width="1.5"
+              />
+              <polygon
+                points="24,55 68,24 76,35 32,66"
+                fill="#ffffff"
+                stroke="#0f172a"
+                stroke-width="2"
+              />
               <polygon points="28,54 66,27 72,35 34,62" fill="#e0f2fe" />
-              <line x1="48" y1="40" x2="54" y2="48" stroke="#0f172a" stroke-width="1.8" />
+              <line
+                x1="48"
+                y1="40"
+                x2="54"
+                y2="48"
+                stroke="#0f172a"
+                stroke-width="1.8"
+              />
               <circle cx="58" cy="33" r="4" fill="#fbbf24" />
-              <path d="M 38 46 Q 42 43 47 45 Q 51 44 52 47 Z" fill="#ffffff" stroke="#94a3b8" stroke-width="1" />
+              <path
+                d="M 38 46 Q 42 43 47 45 Q 51 44 52 47 Z"
+                fill="#ffffff"
+                stroke="#94a3b8"
+                stroke-width="1"
+              />
             </svg>
-            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px;">
+            <div
+              style="
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 8px;
+              "
+            >
               <div>
-                <strong style="color: #0f172a; font-size: 0.95rem; display: block; margin-bottom: 3px;">✦ DER BLICK DURCHS DACHFENSTER ✦</strong>
-                <p style="font-size: 0.8rem; line-height: 1.4; color: #334155;">
-                  <em>„Tagsüber strahlt er im weiten Blau,<br />nachts funkelt er voll Sternenstaub.“</em><br />
+                <strong
+                  style="
+                    color: #0f172a;
+                    font-size: 0.95rem;
+                    display: block;
+                    margin-bottom: 3px;
+                  "
+                  >✦ DER BLICK DURCHS DACHFENSTER ✦</strong
+                >
+                <p style="font-size: 0.8rem; line-height: 1.4; color: #334155">
+                  <em
+                    >„Tagsüber strahlt er im weiten Blau,<br />nachts funkelt er
+                    voll Sternenstaub.“</em
+                  ><br />
                   Wohin blickt man durch das schräge Dachfenster nach draußen?
                 </p>
               </div>
-              <div style="border-top: 1px dashed #cbd5e1; padding-top: 8px;">
-                <div style="font-size: 0.72rem; color: #64748b; margin-bottom: 6px;">Entwirre die 6 Buchstaben des Himmelszelts:</div>
+              <div style="border-top: 1px dashed #cbd5e1; padding-top: 8px">
+                <div
+                  style="font-size: 0.72rem; color: #64748b; margin-bottom: 6px"
+                >
+                  Entwirre die 6 Buchstaben des Himmelszelts:
+                </div>
                 <div class="tile-row">
                   <span class="char-tile">M</span>
                   <span class="char-tile">E</span>
@@ -1230,13 +2180,29 @@
                   <span class="char-tile">I</span>
                   <span class="char-tile">M</span>
                 </div>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 700; color: #0284c7; margin-top: 6px;">
+                <div
+                  style="
+                    font-family: &quot;JetBrains Mono&quot;, monospace;
+                    font-size: 0.85rem;
+                    font-weight: 700;
+                    color: #0284c7;
+                    margin-top: 6px;
+                  "
+                >
                   Lösungswort: [ _ _ _ _ _ _ ]
                 </div>
               </div>
             </div>
           </div>
-          <div style="font-size: 0.6rem; color: #94a3b8; font-family: 'JetBrains Mono', monospace; text-align: center; margin-top: 4px;">
+          <div
+            style="
+              font-size: 0.6rem;
+              color: #94a3b8;
+              font-family: &quot;JetBrains Mono&quot;, monospace;
+              text-align: center;
+              margin-top: 4px;
+            "
+          >
             [ ARTEFAKT-KARTE № 04 · DACHWOHNUNG ]
           </div>
         </div>
@@ -1244,38 +2210,88 @@
         <!-- Big Card 4: Abstellkammer (Station 6) - MIT DECOY-WÖRTERN -->
         <div class="row-cut-box">
           <div class="row-card-header">
-            <span class="row-card-title">HINWEISKARTE: ABSTELLKAMMER (St. 6)</span>
+            <span class="row-card-title"
+              >HINWEISKARTE: ABSTELLKAMMER (St. 6)</span
+            >
             <span class="row-card-loc">Im Vorratsregal</span>
           </div>
           <div class="row-card-body">
             <!-- 8x8 Word Search Grid: VORRAT diagonal, plus Decoys BESEN, DOSE, EIMER, KARTON -->
             <div class="word-grid-8x8">
-              <span>B</span><span>E</span><span>S</span><span>E</span><span>N</span><span>X</span><span>F</span><span>Q</span>
-              <span>D</span><span style="color: #0f172a;">V</span><span>L</span><span>T</span><span>G</span><span>Z</span><span>W</span><span>E</span>
-              <span>O</span><span>Q</span><span style="color: #0f172a;">O</span><span>J</span><span>K</span><span>P</span><span>L</span><span>I</span>
-              <span>S</span><span>X</span><span>P</span><span style="color: #0f172a;">R</span><span>M</span><span>F</span><span>A</span><span>M</span>
-              <span>E</span><span>L</span><span>U</span><span>N</span><span style="color: #0f172a;">R</span><span>K</span><span>H</span><span>E</span>
-              <span>W</span><span>C</span><span>J</span><span>Y</span><span>Z</span><span style="color: #0f172a;">A</span><span>B</span><span>R</span>
-              <span>G</span><span>S</span><span>F</span><span>Q</span><span>M</span><span>B</span><span style="color: #0f172a;">T</span><span>L</span>
-              <span>K</span><span>A</span><span>R</span><span>T</span><span>O</span><span>N</span><span>Z</span><span>P</span>
+              <span>B</span><span>E</span><span>S</span><span>E</span
+              ><span>N</span><span>X</span><span>F</span><span>Q</span>
+              <span>D</span><span style="color: #0f172a">V</span><span>L</span
+              ><span>T</span><span>G</span><span>Z</span><span>W</span
+              ><span>E</span> <span>O</span><span>Q</span
+              ><span style="color: #0f172a">O</span><span>J</span><span>K</span
+              ><span>P</span><span>L</span><span>I</span> <span>S</span
+              ><span>X</span><span>P</span><span style="color: #0f172a">R</span
+              ><span>M</span><span>F</span><span>A</span><span>M</span>
+              <span>E</span><span>L</span><span>U</span><span>N</span
+              ><span style="color: #0f172a">R</span><span>K</span><span>H</span
+              ><span>E</span> <span>W</span><span>C</span><span>J</span
+              ><span>Y</span><span>Z</span><span style="color: #0f172a">A</span
+              ><span>B</span><span>R</span> <span>G</span><span>S</span
+              ><span>F</span><span>Q</span><span>M</span><span>B</span
+              ><span style="color: #0f172a">T</span><span>L</span> <span>K</span
+              ><span>A</span><span>R</span><span>T</span><span>O</span
+              ><span>N</span><span>Z</span><span>P</span>
             </div>
-            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px;">
+            <div
+              style="
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 8px;
+              "
+            >
               <div>
-                <strong style="color: #0f172a; font-size: 0.95rem; display: block; margin-bottom: 3px;">✦ DAS REGAL-GITTER ✦</strong>
-                <p style="font-size: 0.8rem; line-height: 1.45; color: #334155;">
-                  Im Durcheinander des Regals haben sich mehrere Begriffe versteckt.<br />
-                  Doch Vorsicht vor falschen Fährten: Nur das eine <strong>6-Buchstaben-Hauptwort</strong> schaltet die Kammer frei!
+                <strong
+                  style="
+                    color: #0f172a;
+                    font-size: 0.95rem;
+                    display: block;
+                    margin-bottom: 3px;
+                  "
+                  >✦ DAS REGAL-GITTER ✦</strong
+                >
+                <p style="font-size: 0.8rem; line-height: 1.45; color: #334155">
+                  Im Durcheinander des Regals haben sich mehrere Begriffe
+                  versteckt.<br />
+                  Doch Vorsicht vor falschen Fährten: Nur das eine
+                  <strong>6-Buchstaben-Hauptwort</strong> schaltet die Kammer
+                  frei!
                 </p>
               </div>
-              <div style="border-top: 1px dashed #cbd5e1; padding-top: 8px;">
-                <div style="font-size: 0.72rem; color: #64748b; margin-bottom: 6px;">Finde das verborgene 6-Buchstaben-Wort im Gitter:</div>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.05rem; font-weight: 800; color: #0284c7;">
+              <div style="border-top: 1px dashed #cbd5e1; padding-top: 8px">
+                <div
+                  style="font-size: 0.72rem; color: #64748b; margin-bottom: 6px"
+                >
+                  Finde das verborgene 6-Buchstaben-Wort im Gitter:
+                </div>
+                <div
+                  style="
+                    font-family: &quot;JetBrains Mono&quot;, monospace;
+                    font-size: 1.05rem;
+                    font-weight: 800;
+                    color: #0284c7;
+                  "
+                >
                   Gesuchtes Wort: [ _ _ _ _ _ _ ]
                 </div>
               </div>
             </div>
           </div>
-          <div style="font-size: 0.6rem; color: #94a3b8; font-family: 'JetBrains Mono', monospace; text-align: center; margin-top: 4px;">
+          <div
+            style="
+              font-size: 0.6rem;
+              color: #94a3b8;
+              font-family: &quot;JetBrains Mono&quot;, monospace;
+              text-align: center;
+              margin-top: 4px;
+            "
+          >
             [ ARTEFAKT-KARTE № 06 · ABSTELLKAMMER ]
           </div>
         </div>
@@ -1286,43 +2302,124 @@
     <div class="a4-page">
       <div class="page-header">
         <div class="page-title">EXIT – GEBURTSTAGS-EDITION: ALEXA 26</div>
-        <div class="page-badge">SEITE 5 · GROSSE RAUM-HINWEISKARTEN (TEIL 3)</div>
+        <div class="page-badge">
+          SEITE 5 · GROSSE RAUM-HINWEISKARTEN (TEIL 3)
+        </div>
       </div>
-      <div style="font-size: 0.64rem; color: #475569; margin-bottom: 6px; background: #f8fafc; border: 1px dashed #cbd5e1; padding: 4px 8px; border-radius: 4px; display: flex; justify-content: space-between;">
-        <span>✂️ <strong>Anleitung:</strong> Diese 2 großen Kärtchen ausschneiden und an den Verstecken deponieren.</span>
-        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: #64748b;">LÖSUNGEN: St. 8: ECHO · St. 10: ◀▼▶▼</span>
+      <div
+        style="
+          font-size: 0.64rem;
+          color: #475569;
+          margin-bottom: 6px;
+          background: #f8fafc;
+          border: 1px dashed #cbd5e1;
+          padding: 4px 8px;
+          border-radius: 4px;
+          display: flex;
+          justify-content: space-between;
+        "
+      >
+        <span
+          >✂️ <strong>Anleitung:</strong> Diese 2 großen Kärtchen ausschneiden
+          und an den Verstecken deponieren.</span
+        >
+        <span
+          style="
+            font-family: &quot;JetBrains Mono&quot;, monospace;
+            font-size: 0.6rem;
+            color: #64748b;
+          "
+          >LÖSUNGEN: St. 8: ECHO · St. 10: ◀▼▶▼</span
+        >
       </div>
 
       <div class="card-grid-1col">
         <!-- Big Card 5: Separates WC (Station 8) -->
         <div class="row-cut-box">
           <div class="row-card-header">
-            <span class="row-card-title">HINWEISKARTE: SEPARATES WC (St. 8)</span>
+            <span class="row-card-title"
+              >HINWEISKARTE: SEPARATES WC (St. 8)</span
+            >
             <span class="row-card-loc">Hinterm Handtuchhalter</span>
           </div>
           <div class="row-card-body">
-            <div style="width: 85px; height: 85px; background: #ffffff; border: 2px solid #0f172a; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 2.8rem; flex-shrink: 0;">
+            <div
+              style="
+                width: 85px;
+                height: 85px;
+                background: #ffffff;
+                border: 2px solid #0f172a;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.8rem;
+                flex-shrink: 0;
+              "
+            >
               🗣️
             </div>
-            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px;">
+            <div
+              style="
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 8px;
+              "
+            >
               <div>
-                <strong style="color: #0f172a; font-size: 0.95rem; display: block; margin-bottom: 3px;">✦ RÄTSEL DER FLIESENWAND ✦</strong>
-                <p style="font-size: 0.82rem; line-height: 1.45; color: #334155;">
-                  <em>„Kein Mund, doch ich antworte dir.<br />
-                  Keine Ohren, doch ich vernehme dich.<br />
-                  Rufe in den Raum &ndash; und ich kehre zu dir zurück.“</em>
+                <strong
+                  style="
+                    color: #0f172a;
+                    font-size: 0.95rem;
+                    display: block;
+                    margin-bottom: 3px;
+                  "
+                  >✦ RÄTSEL DER FLIESENWAND ✦</strong
+                >
+                <p
+                  style="font-size: 0.82rem; line-height: 1.45; color: #334155"
+                >
+                  <em
+                    >„Kein Mund, doch ich antworte dir.<br />
+                    Keine Ohren, doch ich vernehme dich.<br />
+                    Rufe in den Raum &ndash; und ich kehre zu dir zurück.“</em
+                  >
                 </p>
               </div>
-              <div style="border-top: 1px dashed #cbd5e1; padding-top: 8px;">
-                <div style="font-size: 0.72rem; color: #64748b; margin-bottom: 6px;">Welches akustische Phänomen antwortet dir?</div>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.25rem; font-weight: 900; color: #0284c7; letter-spacing: 8px;">
+              <div style="border-top: 1px dashed #cbd5e1; padding-top: 8px">
+                <div
+                  style="font-size: 0.72rem; color: #64748b; margin-bottom: 6px"
+                >
+                  Welches akustische Phänomen antwortet dir?
+                </div>
+                <div
+                  style="
+                    font-family: &quot;JetBrains Mono&quot;, monospace;
+                    font-size: 1.25rem;
+                    font-weight: 900;
+                    color: #0284c7;
+                    letter-spacing: 8px;
+                  "
+                >
                   [ _ _ _ _ ]
                 </div>
-                <div style="font-size: 0.7rem; color: #64748b; margin-top: 4px;">(4 Buchstaben)</div>
+                <div style="font-size: 0.7rem; color: #64748b; margin-top: 4px">
+                  (4 Buchstaben)
+                </div>
               </div>
             </div>
           </div>
-          <div style="font-size: 0.6rem; color: #94a3b8; font-family: 'JetBrains Mono', monospace; text-align: center; margin-top: 4px;">
+          <div
+            style="
+              font-size: 0.6rem;
+              color: #94a3b8;
+              font-family: &quot;JetBrains Mono&quot;, monospace;
+              text-align: center;
+              margin-top: 4px;
+            "
+          >
             [ ARTEFAKT-KARTE № 08 · SEPARATES WC ]
           </div>
         </div>
@@ -1335,45 +2432,124 @@
           </div>
           <div class="row-card-body">
             <!-- Big Maze SVG: 3 cols x 3 rows -->
-            <svg viewBox="0 0 100 85" style="width: 120px; height: 95px; flex-shrink: 0; background: #0f172a; border-radius: 6px; padding: 4px;">
+            <svg
+              viewBox="0 0 100 85"
+              style="
+                width: 120px;
+                height: 95px;
+                flex-shrink: 0;
+                background: #0f172a;
+                border-radius: 6px;
+                padding: 4px;
+              "
+            >
               <!-- Row 1: Wall, Weg, Start 🚪 -->
               <rect x="2" y="2" width="28" height="25" fill="#1e293b" />
               <rect x="34" y="2" width="28" height="25" fill="#334155" rx="3" />
               <rect x="66" y="2" width="28" height="25" fill="#10b981" rx="3" />
-              <text x="80" y="19" font-size="12" text-anchor="middle" fill="#fff">🚪</text>
+              <text
+                x="80"
+                y="19"
+                font-size="12"
+                text-anchor="middle"
+                fill="#fff"
+              >
+                🚪
+              </text>
 
               <!-- Row 2: Wall, Weg, Weg -->
               <rect x="2" y="30" width="28" height="25" fill="#1e293b" />
-              <rect x="34" y="30" width="28" height="25" fill="#334155" rx="3" />
-              <rect x="66" y="30" width="28" height="25" fill="#334155" rx="3" />
+              <rect
+                x="34"
+                y="30"
+                width="28"
+                height="25"
+                fill="#334155"
+                rx="3"
+              />
+              <rect
+                x="66"
+                y="30"
+                width="28"
+                height="25"
+                fill="#334155"
+                rx="3"
+              />
 
               <!-- Row 3: Wall, Wall, Ziel 🗝️ -->
               <rect x="2" y="58" width="28" height="25" fill="#1e293b" />
               <rect x="34" y="58" width="28" height="25" fill="#1e293b" />
-              <rect x="66" y="58" width="28" height="25" fill="#f59e0b" rx="3" />
-              <text x="80" y="75" font-size="12" text-anchor="middle" fill="#fff">🗝️</text>
+              <rect
+                x="66"
+                y="58"
+                width="28"
+                height="25"
+                fill="#f59e0b"
+                rx="3"
+              />
+              <text
+                x="80"
+                y="75"
+                font-size="12"
+                text-anchor="middle"
+                fill="#fff"
+              >
+                🗝️
+              </text>
             </svg>
-            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px;">
+            <div
+              style="
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 8px;
+              "
+            >
               <div>
-                <strong style="color: #0f172a; font-size: 0.95rem; display: block; margin-bottom: 3px;">✦ DER FLUCHTWEG ✦</strong>
-                <p style="font-size: 0.8rem; line-height: 1.4; color: #334155;">
-                  Folge dem freien Weg im Grundriss von <strong>START 🚪</strong> zum <strong>ZIEL 🗝️</strong>.<br />
+                <strong
+                  style="
+                    color: #0f172a;
+                    font-size: 0.95rem;
+                    display: block;
+                    margin-bottom: 3px;
+                  "
+                  >✦ DER FLUCHTWEG ✦</strong
+                >
+                <p style="font-size: 0.8rem; line-height: 1.4; color: #334155">
+                  Folge dem freien Weg im Grundriss von
+                  <strong>START 🚪</strong> zum <strong>ZIEL 🗝️</strong>.<br />
                   Jeder Schritt entspricht einer Richtung im Raum.
                 </p>
               </div>
-              <div style="border-top: 1px dashed #cbd5e1; padding-top: 8px;">
-                <div style="font-size: 0.72rem; color: #64748b; margin-bottom: 6px;">Tippe die 4 Schritte der Reihe nach im Steuerkreuz (D-Pad) der App ein:</div>
+              <div style="border-top: 1px dashed #cbd5e1; padding-top: 8px">
+                <div
+                  style="font-size: 0.72rem; color: #64748b; margin-bottom: 6px"
+                >
+                  Tippe die 4 Schritte der Reihe nach im Steuerkreuz (D-Pad) der
+                  App ein:
+                </div>
                 <div class="tile-row">
                   <span class="char-tile orange">◀</span>
                   <span class="char-tile orange">▼</span>
                   <span class="char-tile orange">▶</span>
                   <span class="char-tile orange">▼</span>
                 </div>
-                <div style="font-size: 0.7rem; color: #64748b; margin-top: 6px;">(Links &rarr; Runter &rarr; Rechts &rarr; Runter)</div>
+                <div style="font-size: 0.7rem; color: #64748b; margin-top: 6px">
+                  (Links &rarr; Runter &rarr; Rechts &rarr; Runter)
+                </div>
               </div>
             </div>
           </div>
-          <div style="font-size: 0.6rem; color: #94a3b8; font-family: 'JetBrains Mono', monospace; text-align: center; margin-top: 4px;">
+          <div
+            style="
+              font-size: 0.6rem;
+              color: #94a3b8;
+              font-family: &quot;JetBrains Mono&quot;, monospace;
+              text-align: center;
+              margin-top: 4px;
+            "
+          >
             [ ARTEFAKT-KARTE № 10 · EINLIEGER ]
           </div>
         </div>
@@ -1384,11 +2560,35 @@
     <div class="a4-page">
       <div class="page-header">
         <div class="page-title">EXIT – GEBURTSTAGS-EDITION: ALEXA 26</div>
-        <div class="page-badge">SEITE 6 · GROSSE RAUM-HINWEISKARTEN (TEIL 4)</div>
+        <div class="page-badge">
+          SEITE 6 · GROSSE RAUM-HINWEISKARTEN (TEIL 4)
+        </div>
       </div>
-      <div style="font-size: 0.64rem; color: #475569; margin-bottom: 6px; background: #f8fafc; border: 1px dashed #cbd5e1; padding: 4px 8px; border-radius: 4px; display: flex; justify-content: space-between;">
-        <span>✂️ <strong>Anleitung:</strong> Diese 2 großen Kärtchen ausschneiden und an den Verstecken deponieren.</span>
-        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: #64748b;">LÖSUNGEN: St. 14: MOTOR · St. 15: FLORA</span>
+      <div
+        style="
+          font-size: 0.64rem;
+          color: #475569;
+          margin-bottom: 6px;
+          background: #f8fafc;
+          border: 1px dashed #cbd5e1;
+          padding: 4px 8px;
+          border-radius: 4px;
+          display: flex;
+          justify-content: space-between;
+        "
+      >
+        <span
+          >✂️ <strong>Anleitung:</strong> Diese 2 großen Kärtchen ausschneiden
+          und an den Verstecken deponieren.</span
+        >
+        <span
+          style="
+            font-family: &quot;JetBrains Mono&quot;, monospace;
+            font-size: 0.6rem;
+            color: #64748b;
+          "
+          >LÖSUNGEN: St. 14: MOTOR · St. 15: FLORA</span
+        >
       </div>
 
       <div class="card-grid-1col">
@@ -1399,25 +2599,73 @@
             <span class="row-card-loc">Werkzeugwand / Auto</span>
           </div>
           <div class="row-card-body">
-            <svg viewBox="0 0 60 60" style="width: 85px; height: 85px; flex-shrink: 0;">
-              <circle cx="30" cy="30" r="24" fill="#f8fafc" stroke="#0f172a" stroke-width="2.5" />
-              <circle cx="30" cy="30" r="11" fill="#ffffff" stroke="#0f172a" stroke-width="2" />
+            <svg
+              viewBox="0 0 60 60"
+              style="width: 85px; height: 85px; flex-shrink: 0"
+            >
+              <circle
+                cx="30"
+                cy="30"
+                r="24"
+                fill="#f8fafc"
+                stroke="#0f172a"
+                stroke-width="2.5"
+              />
+              <circle
+                cx="30"
+                cy="30"
+                r="11"
+                fill="#ffffff"
+                stroke="#0f172a"
+                stroke-width="2"
+              />
               <rect x="27" y="3" width="6" height="6" fill="#0f172a" />
               <rect x="27" y="51" width="6" height="6" fill="#0f172a" />
               <rect x="3" y="27" width="6" height="6" fill="#0f172a" />
               <rect x="51" y="27" width="6" height="6" fill="#0f172a" />
-              <text x="30" y="35" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" fill="#d97706" text-anchor="middle">PS</text>
+              <text
+                x="30"
+                y="35"
+                font-family="'JetBrains Mono', monospace"
+                font-size="11"
+                font-weight="900"
+                fill="#d97706"
+                text-anchor="middle"
+              >
+                PS
+              </text>
             </svg>
-            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px;">
+            <div
+              style="
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 8px;
+              "
+            >
               <div>
-                <strong style="color: #0f172a; font-size: 0.95rem; display: block; margin-bottom: 3px;">✦ DER VERSCHOBENE CODE ✦</strong>
-                <p style="font-size: 0.8rem; line-height: 1.4; color: #334155;">
+                <strong
+                  style="
+                    color: #0f172a;
+                    font-size: 0.95rem;
+                    display: block;
+                    margin-bottom: 3px;
+                  "
+                  >✦ DER VERSCHOBENE CODE ✦</strong
+                >
+                <p style="font-size: 0.8rem; line-height: 1.4; color: #334155">
                   Auf dem Motorblock steht ein verschobener Code.<br />
-                  Jeder Buchstabe ist um <strong>1 Stelle im Alphabet zu weit (+1)</strong>:
+                  Jeder Buchstabe ist um
+                  <strong>1 Stelle im Alphabet zu weit (+1)</strong>:
                 </p>
               </div>
-              <div style="border-top: 1px dashed #cbd5e1; padding-top: 8px;">
-                <div style="font-size: 0.72rem; color: #64748b; margin-bottom: 6px;">Gehe 1 Schritt zurück im Alphabet:</div>
+              <div style="border-top: 1px dashed #cbd5e1; padding-top: 8px">
+                <div
+                  style="font-size: 0.72rem; color: #64748b; margin-bottom: 6px"
+                >
+                  Gehe 1 Schritt zurück im Alphabet:
+                </div>
                 <div class="tile-row">
                   <span class="char-tile orange">N</span>
                   <span class="char-tile orange">P</span>
@@ -1425,13 +2673,32 @@
                   <span class="char-tile orange">P</span>
                   <span class="char-tile orange">S</span>
                 </div>
-                <div style="font-size: 0.72rem; color: #64748b; margin-top: 6px;">
-                  Lösungswort: <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #0f172a; font-size: 0.85rem;">[ _ _ _ _ _ ]</span>
+                <div
+                  style="font-size: 0.72rem; color: #64748b; margin-top: 6px"
+                >
+                  Lösungswort:
+                  <span
+                    style="
+                      font-family: &quot;JetBrains Mono&quot;, monospace;
+                      font-weight: 700;
+                      color: #0f172a;
+                      font-size: 0.85rem;
+                    "
+                    >[ _ _ _ _ _ ]</span
+                  >
                 </div>
               </div>
             </div>
           </div>
-          <div style="font-size: 0.6rem; color: #94a3b8; font-family: 'JetBrains Mono', monospace; text-align: center; margin-top: 4px;">
+          <div
+            style="
+              font-size: 0.6rem;
+              color: #94a3b8;
+              font-family: &quot;JetBrains Mono&quot;, monospace;
+              text-align: center;
+              margin-top: 4px;
+            "
+          >
             [ ARTEFAKT-KARTE № 14 · GARAGE ]
           </div>
         </div>
@@ -1443,19 +2710,52 @@
             <span class="row-card-loc">Zweig / Pflanzkübel</span>
           </div>
           <div class="row-card-body">
-            <div style="width: 85px; height: 85px; background: #ecfdf5; border: 2px solid #10b981; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 2.8rem; flex-shrink: 0;">
+            <div
+              style="
+                width: 85px;
+                height: 85px;
+                background: #ecfdf5;
+                border: 2px solid #10b981;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.8rem;
+                flex-shrink: 0;
+              "
+            >
               🌿🌸
             </div>
-            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px;">
+            <div
+              style="
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 8px;
+              "
+            >
               <div>
-                <strong style="color: #0f172a; font-size: 0.95rem; display: block; margin-bottom: 3px;">✦ DIE HERRIN DER BLÜTEN ✦</strong>
-                <p style="font-size: 0.82rem; line-height: 1.4; color: #334155;">
+                <strong
+                  style="
+                    color: #0f172a;
+                    font-size: 0.95rem;
+                    display: block;
+                    margin-bottom: 3px;
+                  "
+                  >✦ DIE HERRIN DER BLÜTEN ✦</strong
+                >
+                <p style="font-size: 0.82rem; line-height: 1.4; color: #334155">
                   Die gesamte Tierwelt nennt man <strong>FAUNA</strong>.<br />
                   Wie nennt man die gesamte Pflanzenwelt im Garten?
                 </p>
               </div>
-              <div style="border-top: 1px dashed #cbd5e1; padding-top: 8px;">
-                <div style="font-size: 0.72rem; color: #64748b; margin-bottom: 6px;">Ordne die 5 Blüten-Buchstaben:</div>
+              <div style="border-top: 1px dashed #cbd5e1; padding-top: 8px">
+                <div
+                  style="font-size: 0.72rem; color: #64748b; margin-bottom: 6px"
+                >
+                  Ordne die 5 Blüten-Buchstaben:
+                </div>
                 <div class="tile-row">
                   <span class="char-tile green">A</span>
                   <span class="char-tile green">L</span>
@@ -1463,13 +2763,29 @@
                   <span class="char-tile green">R</span>
                   <span class="char-tile green">F</span>
                 </div>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 700; color: #059669; margin-top: 6px;">
+                <div
+                  style="
+                    font-family: &quot;JetBrains Mono&quot;, monospace;
+                    font-size: 0.85rem;
+                    font-weight: 700;
+                    color: #059669;
+                    margin-top: 6px;
+                  "
+                >
                   Lösungswort: [ _ _ _ _ _ ]
                 </div>
               </div>
             </div>
           </div>
-          <div style="font-size: 0.6rem; color: #94a3b8; font-family: 'JetBrains Mono', monospace; text-align: center; margin-top: 4px;">
+          <div
+            style="
+              font-size: 0.6rem;
+              color: #94a3b8;
+              font-family: &quot;JetBrains Mono&quot;, monospace;
+              text-align: center;
+              margin-top: 4px;
+            "
+          >
             [ ARTEFAKT-KARTE № 15 · GARTEN ]
           </div>
         </div>
@@ -1479,35 +2795,35 @@
     <script>
       function toggleMode(mode) {
         const body = document.body;
-        const btnColor = document.getElementById('btn-color');
-        const btnBw = document.getElementById('btn-bw');
-        if (mode === 'bw') {
-          body.classList.add('bw-mode');
-          btnBw.classList.add('active');
-          btnColor.classList.remove('active');
+        const btnColor = document.getElementById("btn-color");
+        const btnBw = document.getElementById("btn-bw");
+        if (mode === "bw") {
+          body.classList.add("bw-mode");
+          btnBw.classList.add("active");
+          btnColor.classList.remove("active");
           try {
-            localStorage.setItem('print_mode', 'bw');
+            localStorage.setItem("print_mode", "bw");
           } catch (e) {}
         } else {
-          body.classList.remove('bw-mode');
-          btnColor.classList.add('active');
-          btnBw.classList.remove('active');
+          body.classList.remove("bw-mode");
+          btnColor.classList.add("active");
+          btnBw.classList.remove("active");
           try {
-            localStorage.setItem('print_mode', 'color');
+            localStorage.setItem("print_mode", "color");
           } catch (e) {}
         }
       }
 
       function toggleFoldSim() {
-        const box = document.getElementById('fold-sim-box');
+        const box = document.getElementById("fold-sim-box");
         if (box) {
-          box.style.display = box.style.display === 'none' ? 'block' : 'none';
+          box.style.display = box.style.display === "none" ? "block" : "none";
         }
       }
 
       try {
-        if (localStorage.getItem('print_mode') === 'bw') {
-          toggleMode('bw');
+        if (localStorage.getItem("print_mode") === "bw") {
+          toggleMode("bw");
         }
       } catch (e) {}
     </script>
